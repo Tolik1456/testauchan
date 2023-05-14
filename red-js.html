@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Auchan Test</title>
+   <link rel="stylesheet" href="normalize.css">
+   <style>
+      @font-face {
+         font-family: 'SanaSansAlt-Medium';
+         src: local('SanaSansAlt-Medium'),
+            url('./fonts/SanaSansAlt-Medium.woff2') format('woff2'),
+            url('./fonts/SanaSansAlt-Medium.woff') format('woff');
+         font-weight: 500;
+         font-style: normal;
+      }
+
+      @font-face {
+         font-family: 'SanaSansAlt-Book';
+         src: local('SanaSansAlt-Book'),
+            url('./fonts/SanaSansAlt-Book.woff2') format('woff2'),
+            url('./fonts/SanaSansAlt-Book.woff') format('woff');
+         font-weight: 500;
+         font-style: normal;
+      }
+
+      /*------------------------------General------------------------------*/
+
+      :root {
+         --bgColor: #C30F1B;
+      }
+
+      html {
+         box-sizing: border-box;
+      }
+
+      a {
+         color: var(--color-primary);
+         text-decoration: none;
+      }
+
+      img {
+         max-width: 100%;
+      }
+
+      .container {
+         max-width: 1056px;
+         margin: 0 auto;
+      }
+
+      .header-top-container {
+         max-width: 1391px;
+         margin: 0 auto;
+      }
+
+      .header-bottom-container {
+         max-width: 1319px;
+         margin: 0 auto;
+      }
+
+      body {
+         font-family: 'SanaSansAlt-Medium', sans-serif;
+         font-weight: 500;
+      }
+
+      li,
+      ul,
+      p,
+      h1,
+      h2,
+      h3,
+      p {
+         font-weight: normal;
+         margin: 0;
+         padding: 0;
+         list-style: none;
+      }
+
+      button {
+         border: none;
+         padding: 0;
+         margin: 0;
+         background-color: transparent;
+         cursor: pointer;
+      }
+
+      .flex {
+         display: flex;
+      }
+
+      .main {
+         overflow: hidden;
+      }
+
+      /*------------------------------Header------------------------------*/
+
+      .header-top {
+         padding: 4px 0px 4px 0px;
+         background-color: #333333;
+      }
+
+      .header-bottom {
+         padding: 16px 0px 16px 0px;
+         background-color: #FFFFFF;
+      }
+
+      .header-top-main {
+         justify-content: space-between;
+      }
+
+      .header-top-button {
+         display: flex;
+         align-items: center;
+         margin-right: 14px;
+         font-size: 14px;
+         line-height: 140%;
+         font-feature-settings: 'pnum' on, 'lnum' on;
+         color: #F0F0F0;
+      }
+
+      .mr0 {
+         margin-right: 0px;
+      }
+
+      .header-top-button-icon {
+         margin-right: 5px;
+      }
+
+      .btn-green {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 184px;
+         height: 48px;
+         background: #00985F;
+         border-radius: 24px;
+         font-weight: 600;
+         font-size: 16px;
+         line-height: 140%;
+         color: #FFFFFF;
+      }
+
+      .header-bottom-main {
+         align-items: center;
+      }
+
+      .header-bottom-menu-icon {
+         margin-right: 5px;
+      }
+
+      .header-bottom-menu-icon-green {
+         display: none;
+      }
+
+      .mr32 {
+         margin-right: 32px;
+      }
+
+      .mr20 {
+         margin-right: 20px;
+      }
+
+      .mr16 {
+         margin-right: 16px;
+      }
+
+      .header-bottom-search,
+      .header-bottom-search-mobile {
+         position: relative;
+         width: 750px;
+      }
+
+      .header-bottom-search::before,
+      .header-bottom-search-mobile::before {
+         position: absolute;
+         content: '';
+         top: 13px;
+         left: 8px;
+         width: 24px;
+         height: 24px;
+         background-image: url('./img/search.svg');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .header-bottom-search-input {
+         padding-left: 35px;
+         width: 100%;
+         height: 48px;
+         border: 1px solid #E6E7EB;
+         border-radius: 6px;
+
+      }
+
+      .header-bottom-search-input::placeholder {
+         font-weight: 400;
+         font-size: 16px;
+         line-height: 140%;
+         color: #7C808C;
+      }
+
+      .header-bottom-search-input-button {
+         width: 80px;
+         height: 48px;
+         background-color: #E0001A;
+         color: #FFFFFF;
+         border-radius: 0px 6px 6px 0px;
+         font-size: 14px;
+         line-height: 140%;
+         margin-left: -5px;
+      }
+
+      .header-bottom-search-mobile {
+         display: none;
+      }
+
+      .header-bottom-profile,
+      .header-bottom-cart {
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         position: relative;
+         align-items: center;
+         font-family: 'SanaSansAlt-Book';
+         font-size: 16px;
+         line-height: 140%;
+         color: #333333;
+      }
+
+      .header-bottom-cart::before {
+         position: absolute;
+         content: '19';
+         top: -11px;
+         right: 8px;
+         width: 24px;
+         height: 18px;
+         background-color: #E0001A;
+         color: #FFFFFF;
+         border-radius: 12px;
+         font-size: 12px;
+         line-height: 120%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      /*------------------------------Hero------------------------------*/
+
+      .hero {
+         position: relative;
+         width: 100%;
+         height: 240px;
+         background-image: url('./img/hero-bg.png');
+         background-repeat: repeat-x;
+         background-size: cover;
+      }
+
+      .hero::before {
+         content: '';
+         position: absolute;
+         width: 393px;
+         height: 406px;
+         left: 0;
+         top: 53px;
+         background-image: url('./img/hero-bg2.png');
+         background-repeat: no-repeat;
+         background-position: center;
+         background-size: cover;
+      }
+
+      .hero::after {
+         content: '';
+         position: absolute;
+         width: 55px;
+         height: 49px;
+         right: 174px;
+         top: 215px;
+         background-image: url('./img/snowflake1.png');
+         background-repeat: no-repeat;
+         background-position: center;
+         background-size: cover;
+      }
+
+      /*------------------------------Swiper------------------------------*/
+
+      .swiper {
+         padding-top: 30px;
+         background-color: var(--bgColor);
+      }
+
+      * {
+         box-sizing: border-box;
+      }
+
+      .slider {
+         position: relative;
+         width: 632px;
+         height: 464px;
+         user-select: none;
+         touch-action: pan-y;
+      }
+
+      .slider img {
+         pointer-events: none;
+      }
+
+      .slider-list {
+         width: 100%;
+         height: 100%;
+         overflow: hidden;
+      }
+
+      .slider-track {
+         display: flex;
+      }
+
+      .slide {
+         width: 632px;
+         height: 464px;
+         flex-shrink: 0;
+         font-size: 50px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+
+      .slide-img {
+         width: 100%;
+         height: 100%;
+         background-image: url('./img/swiper-img-red.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .slider-arrows {
+         margin-top: 15px;
+         text-align: center;
+      }
+
+      .next,
+      .prev {
+         position: absolute;
+         width: 64px;
+         height: 64px;
+         top: 200px;
+         z-index: 2;
+      }
+
+      .next-svg-mobile,
+      .prev-svg-mobile {
+         display: none;
+      }
+
+      .next {
+         right: 25px;
+      }
+
+      .prev {
+         left: 15px;
+      }
+
+      .next.disabled,
+      .prev.disabled {
+         opacity: .25;
+         pointer-events: none;
+      }
+
+      .swiper-h1 {
+         display: block;
+         margin: 0 auto;
+         margin-bottom: 40px;
+      }
+
+      .swiper-h1-mobile {
+         display: none;
+      }
+
+      .swiper-ul {
+         width: 100%;
+         justify-content: center;
+         align-self: center;
+         margin-bottom: 40px;
+         padding-left: 65px;
+         justify-content: flex-start;
+      }
+
+      .swiper-ul-li {
+         cursor: pointer;
+         font-family: 'SanaSansAlt-Book';
+         font-weight: 400;
+         font-size: 18px;
+         line-height: 100%;
+         color: #FFFFFF;
+         margin-right: 74px;
+         white-space: nowrap;
+      }
+
+      .swiper-ul-li-checked {
+         position: relative;
+         font-family: 'SanaSansAlt-Medium';
+         font-weight: 500;
+         font-size: 18px;
+         line-height: 100%;
+         color: #FFFFFF;
+      }
+
+      .swiper-ul-li-checked::before {
+         pointer-events: none;
+         content: '';
+         position: absolute;
+         width: 64px;
+         height: 2px;
+         left: 50%;
+         bottom: -13px;
+         transform: translateX(-50%);
+         border-bottom: 2px solid #FFFFFF;
+      }
+
+      .swiper-main {
+         position: relative;
+         width: 100%;
+         justify-content: space-between;
+         margin: 0 auto;
+         z-index: 1;
+      }
+
+      .swiper-main-right::before {
+         content: '';
+         position: absolute;
+         width: 48px;
+         height: 43px;
+         left: 40px;
+         top: 30px;
+         background-image: url('./img/snowflake1.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+         z-index: 1;
+      }
+
+      .swiper-main::after {
+         content: '';
+         position: absolute;
+         width: 30px;
+         height: 30px;
+         right: 42px;
+         bottom: 30px;
+         background-image: url('./img/snowflake3.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+
+      .swiper-main-right::after {
+         content: '';
+         position: absolute;
+         width: 94px;
+         height: 94px;
+         right: -47px;
+         top: 185px;
+         background-image: url('./img/snowflake2.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+         z-index: -1;
+      }
+
+      .swiper-main-right {
+         position: relative;
+         width: 423px;
+      }
+
+      .swiper-main-right-background {
+         position: absolute;
+         top: 0;
+         right: 0;
+         width: 480px;
+         height: 464px;
+         background-image: url('./img/swiper-bg-red.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .swiper-main-right-background-mobile {
+         display: none;
+      }
+
+      .swiper-main-count {
+         position: absolute;
+         bottom: 20px;
+         left: 35px;
+         font-family: 'SanaSansAlt-Book';
+         font-style: normal;
+         font-weight: 400;
+         font-size: 24px;
+         line-height: 29px;
+         color: #FFFFFF;
+         z-index: 1;
+      }
+
+      .swiper-main-right-descr {
+         flex-direction: column;
+         position: relative;
+         z-index: 1;
+         justify-content: center;
+         align-items: center;
+         padding-top: 25px;
+      }
+
+      .swiper-main-right-descr-title {
+         font-size: 18px;
+         line-height: 22px;
+         color: #FEE65C;
+         margin-bottom: 1px;
+      }
+
+      .swiper-main-right-descr-img {
+         margin-top: -18px;
+         margin-bottom: -18px;
+      }
+
+      .swiper-main-right-descr-text {
+         width: 350px;
+         text-align: center;
+         font-family: 'SanaSansAlt-Book';
+         font-style: normal;
+         font-weight: 400;
+         font-size: 16px;
+         line-height: 140%;
+         color: #FFFFFF;
+         margin-bottom: 40px;
+      }
+
+      .swiper-main-right-descr-btn {
+         width: 209px;
+         height: 48px;
+         color: var(--bgColor);
+         font-weight: 900;
+         font-size: 16px;
+         line-height: 140%;
+         background-color: #FFFFFF;
+         border-radius: 24px;
+      }
+
+      /*------------------------------Cards------------------------------*/
+
+      .cards {
+         position: relative;
+         padding-top: 48px;
+         background-color: var(--bgColor);
+      }
+
+      .cards-ul-li-front-bg-reverse {
+         transform: scale(-1, 1);
+      }
+
+      .cards-ul-li {
+         width: 100%;
+         height: 100%;
+         transition: transform 1s;
+         transform-style: preserve-3d;
+         position: relative;
+      }
+
+      .cards-ul-li.is-flipped {
+         transform: rotateY(180deg);
+      }
+
+      .cards-ul-li-card {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         -webkit-backface-visibility: hidden;
+         backface-visibility: hidden;
+      }
+
+      .cards-ul-li-front {
+         cursor: pointer;
+      }
+
+      .cards-ul-li-back {
+         transform: rotateY(180deg);
+      }
+
+      .cards-ul-li-back-content {
+         width: 100%;
+         text-align: center;
+         color: #333333;
+         flex-direction: column;
+         padding-top: 55px;
+         padding-left: 30px;
+      }
+
+      .cards-ul-li-front-img {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 403px;
+      }
+
+      .cards-ul-li-front-img1 {
+         background-image: url('./img/card1-red.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul-li-front-img2 {
+         background-image: url('./img/card2-red.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul-li-front-img3 {
+         background-image: url('./img/card3-red.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul-li-input {
+         visibility: hidden;
+      }
+
+      .cards::before {
+         content: '';
+         position: absolute;
+         top: -86px;
+         left: -103px;
+         width: 211px;
+         height: 188px;
+         background-image: url('./img/snowflake4.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards::after {
+         content: '';
+         position: absolute;
+         bottom: -4px;
+         right: -238px;
+         width: 383px;
+         height: 341px;
+         background-image: url('./img/snowflake4.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul {
+         margin-bottom: 30px;
+      }
+
+      .cards-ul-li {
+         position: relative;
+         width: 320px;
+         height: 488px;
+      }
+
+      .cards-ul-li:not(:last-child) {
+         margin-right: 48px;
+      }
+
+      .cards-ul-li-add {
+         position: absolute;
+         top: -93px;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         margin: auto;
+         width: 64px;
+         height: 64px;
+         background: rgba(51, 51, 51, 0.56);
+         border-radius: 100%;
+      }
+
+      .cards-ul-li-add::before {
+         position: absolute;
+         content: '';
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         margin: auto;
+         width: 36px;
+         height: 36px;
+         background-color: #FFFFFF;
+         border-radius: 100%;
+      }
+
+      .cards-ul-li-add::after {
+         position: absolute;
+         content: '';
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         margin: auto;
+         width: 16px;
+         height: 16px;
+         background-image: url('./img/add.svg');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul-li-front-bg {
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         width: 100%;
+         height: 201px;
+         background-image: url('./img/cards-bg-red.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul-li-snowflake1 {
+         position: absolute;
+         bottom: 50px;
+         left: 17px;
+         width: 37px;
+         height: 37px;
+         background-image: url('./img/snowflake3.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul-li-snowflake2 {
+         position: absolute;
+         bottom: 60px;
+         right: 23px;
+         width: 30px;
+         height: 30px;
+         background-image: url('./img/snowflake3.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul-li-snowflake2::before {
+         content: '';
+         position: absolute;
+         bottom: -43px;
+         left: -243px;
+         width: 48px;
+         height: 43px;
+         background-image: url('./img/snowflake1.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul-li-snowflake3 {
+         position: absolute;
+         bottom: 25px;
+         right: 25px;
+         width: 37px;
+         height: 37px;
+         background-image: url('./img/snowflake3.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .cards-ul-li-snowflake3::before {
+         content: '';
+         position: absolute;
+         bottom: 123px;
+         left: -209px;
+         width: 48px;
+         height: 43px;
+         background-image: url('./img/snowflake1.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .card-ul-li-title {
+         position: absolute;
+         content: '';
+         bottom: 0;
+         left: 0;
+         right: 0;
+         margin: auto;
+         width: 160px;
+         font-size: 24px;
+         line-height: 120%;
+         text-transform: uppercase;
+         color: #FFFFFF;
+         margin-bottom: 14px;
+         text-align: center;
+      }
+
+      .cards-bg-bottom {
+         display: block;
+         width: 347px;
+         height: 219px;
+         margin: 0 auto;
+      }
+
+      .cards-ul-li-back-content-close {
+         position: absolute;
+         content: '';
+         top: -3px;
+         right: 0;
+         width: 48px;
+         height: 48px;
+      }
+
+      .cards-ul-li-back-content-h3 {
+         font-weight: 900;
+         font-size: 20px;
+         line-height: 120%;
+         color: #FFFFFF;
+         margin-bottom: 30px;
+         text-align: left;
+      }
+
+      .cards-ul-li-back-content-text {
+         width: max-content;
+         font-weight: 500;
+         font-size: 16px;
+         line-height: 140%;
+         color: #FFFFFF;
+         text-align: left;
+         margin-bottom: 15px;
+      }
+
+      /*------------------------------Video------------------------------*/
+
+      .video {
+         background-color: var(--bgColor);
+      }
+
+      .video-title {
+         display: none;
+      }
+
+      .video-video {
+         margin-bottom: 37px;
+      }
+
+      .video-effect-img {
+         display: block;
+         width: 323px;
+         height: 226px;
+         margin: 0 auto;
+      }
+
+      .video-effect {
+         margin-left: 40px;
+      }
+
+      .video-effect-div {
+         position: relative;
+      }
+
+      .video-effect-div::before {
+         content: '';
+         position: absolute;
+         top: -33px;
+         left: 284px;
+         width: 37px;
+         height: 37px;
+         background-image: url('./img/snowflake3.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .video-effect-div::after {
+         content: '';
+         position: absolute;
+         top: 114px;
+         right: 124px;
+         width: 37px;
+         height: 37px;
+         background-image: url('./img/snowflake3.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .video-effect-snowflake {
+         position: absolute;
+         top: 40px;
+         left: 140px;
+         width: 64px;
+         height: 57px;
+         background-image: url('./img/snowflake1.png');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      /*------------------------------Footer------------------------------*/
+
+      .footer {
+         padding-top: 36px;
+         padding-bottom: 24px;
+         background-color: #333333;
+      }
+
+      .footer-container {
+         max-width: 1320px;
+         margin: 0 auto;
+      }
+
+      .footer-ul-li {
+         max-width: 312px;
+         min-width: 200px;
+         flex-direction: column;
+      }
+
+      .footer-ul-li-logo {
+         margin-bottom: 30px;
+      }
+
+      .footer-ul-li:not(:last-child) {
+         margin-right: 24px;
+      }
+
+      .footer-ul-li-text {
+         font-family: 'SanaSansAlt-Book';
+         font-weight: 400;
+         font-size: 14px;
+         line-height: 140%;
+         color: #F0F0F0;
+         margin-bottom: 8px;
+      }
+
+      .footer-ul-li-h3 {
+         font-size: 18px;
+         line-height: 120%;
+         color: #FFFFFF;
+         margin-bottom: 8px;
+      }
+
+      .footer-ul-li-number {
+         position: relative;
+         font-style: normal;
+         font-weight: 900;
+         font-size: 20px;
+         line-height: 120%;
+         color: #FFFFFF;
+         margin-bottom: 4px;
+      }
+
+      .footer-ul-li-number::before {
+         content: '';
+         position: absolute;
+         top: 1px;
+         right: 42px;
+         width: 24px;
+         height: 24px;
+         background-image: url('./img/phone.svg');
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+
+      .footer-ul-li-panel {
+         display: flex;
+         overflow: hidden;
+         flex-direction: column;
+      }
+
+      /*------------------------------Adaptive------------------------------*/
+
+
+      @media(max-width:767px) {
+         .header-top {
+            display: none;
+         }
+
+         .hero {
+            background-image: url('./img/hero-bg-mobile.png');
+         }
+
+         .btn-green {
+            display: block;
+            width: 24px;
+            height: 24px;
+            margin: 0;
+            background-color: transparent;
+            border-radius: 0;
+         }
+
+         .header-bottom-container,
+         .container,
+         .footer-container {
+            max-width: 288px;
+         }
+
+         .header-bottom-menu-icon {
+            display: none;
+         }
+
+         .header-bottom-menu-icon-green {
+            display: block;
+         }
+
+         .header-bottom-profile {
+            display: none;
+         }
+
+         .header-bottom-search {
+            display: none;
+         }
+
+         .header-bottom-search-mobile {
+            display: flex;
+            width: 100%;
+         }
+
+         .header-bottom-main {
+            justify-content: space-between;
+            margin-bottom: 12px;
+         }
+
+         .header-bottom-search-mobile::before {
+            top: 8px;
+         }
+
+         .header-bottom-search-input-button,
+         .header-bottom-search-input {
+            height: 40px;
+         }
+
+         .header-bottom-search-input-button {
+            width: 85px;
+            margin-left: -35px;
+         }
+
+         .header-bottom {
+            padding: 13px 0px 13px 0px;
+         }
+
+         .header-bottom-cart-text {
+            display: none;
+         }
+
+         .header-bottom-cart::before {
+            content: '2';
+            top: -9px;
+            right: -10px;
+         }
+
+         .logo svg {
+            width: 80px;
+            height: 24px;
+         }
+
+         .mr32 {
+            margin: 0;
+         }
+
+         .hero::before {
+            width: 150px;
+            height: 255px;
+            top: -23px;
+            background-size: contain;
+         }
+
+         .hero {
+            height: 120px;
+         }
+
+         .hero::after,
+         .swiper-main::after,
+         .swiper-main-right::before,
+         .swiper-main-right::after,
+         .cards::before,
+         .cards::after,
+         .cards-ul-li-snowflake1,
+         .cards-ul-li-snowflake2,
+         .cards-ul-li-snowflake3,
+         .video-effect-div::before,
+         .video-effect-div::after,
+         .video-effect-snowflake {
+            display: none;
+         }
+
+         .swiper-main-count {
+            font-size: 18px;
+            line-height: 22px;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            top: 10px;
+         }
+
+         .swiper-ul {
+            padding-left: 0;
+            overflow-x: scroll;
+            margin-bottom: 35px;
+         }
+
+         .swiper-h1 {
+            display: none;
+         }
+
+         .swiper {
+            padding-top: 0;
+         }
+
+
+         .next-svg-mobile,
+         .prev-svg-mobile {
+            display: block;
+         }
+
+         .prev,
+         .next {
+            top: 185px;
+            width: 16px;
+            height: 16px;
+         }
+
+         .cards {
+            padding-top: 65px;
+         }
+
+         .next {
+            right: 15px;
+         }
+
+         .cards-ul-li:last-child {
+            min-height: 488px;
+         }
+
+         .cards-bg-bottom {
+            display: none;
+         }
+
+         .cards-ul {
+            margin-bottom: 0;
+         }
+
+         .next-svg,
+         .prev-svg {
+            display: none;
+         }
+
+         .swiper-main-right-background {
+            top: -35px;
+         }
+
+         .swiper-h1-mobile {
+            display: block;
+            margin-bottom: 22px;
+         }
+
+         .swiper-ul-li {
+            font-size: 16px;
+            line-height: 100%;
+            margin-right: 26px;
+         }
+
+         .slider {
+            width: 288px;
+            height: 386px;
+         }
+
+         .swiper-main {
+            flex-direction: column;
+         }
+
+         .swiper-main-right {
+            width: 100%;
+         }
+
+         .swiper-main-right-background {
+            width: 100%;
+            height: 360px;
+            background-image: url('./img/swiper-bg-mobile-red.png');
+         }
+
+         .swiper-main-right-background-mobile {
+            position: absolute;
+            bottom: -32px;
+            display: block;
+            width: 100%;
+            height: 200px;
+            background-color: #9C131A;
+            border-radius: 0px 0px 4px 4px;
+            z-index: -1;
+         }
+
+         .swiper-main-right-descr-text {
+            padding-left: 20px;
+            padding-right: 20px;
+            width: 100%;
+            font-size: 16px;
+            line-height: 140%;
+         }
+
+         .swiper-main-right-descr {
+            padding-top: 13px;
+         }
+
+         .swiper-main-right-descr-text {
+            padding-top: 15px;
+         }
+
+         .swiper-main-right-descr-text {
+            margin-bottom: 30px;
+         }
+
+         .swiper-main-right-descr-btn {
+            width: 225px;
+         }
+
+         .cards-ul-li-back-content-h3 {
+            width: 120px;
+         }
+
+         .cards-ul-li-back-content {
+            padding-top: 28px;
+            padding-left: 25px;
+         }
+
+         .cards-ul-li-back-content-close {
+            top: 15px;
+         }
+
+         .cards-ul-li-back-content-text {
+            max-width: 220px;
+         }
+
+         .slide {
+            width: 288px;
+            height: 386px;
+         }
+
+         .slide-img {
+            background-image: url('./img/swiper-img-mobile-red.png');
+         }
+
+         .cards-ul {
+            flex-direction: column;
+         }
+
+         .cards-ul-li:not(:last-child) {
+            margin-right: 0;
+            margin-bottom: 32px;
+         }
+
+         .cards-ul-li {
+            width: 100%;
+            height: 440px;
+         }
+
+         .video-video iframe {
+            width: 288px;
+            height: 162px;
+         }
+
+         .video-effect-img {
+            width: 192px;
+            height: 134px;
+         }
+
+         .video-effect {
+            margin: 0;
+         }
+
+         .video-title {
+            display: block;
+            margin: 0 auto;
+            padding-top: 38px;
+            margin-bottom: 8px;
+            text-align: center;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 140%;
+            text-transform: uppercase;
+            color: #FEE65C;
+         }
+
+         .footer {
+            padding-top: 30px;
+            margin-top: -40px;
+         }
+
+         .footer-ul-li-panel {
+            display: none;
+         }
+
+         .active {
+            display: flex;
+         }
+
+         .footer-ul-li-mobile {
+            position: relative;
+            margin-bottom: 10px;
+         }
+
+         .footer-ul-li:last-child {
+            margin-bottom: 30px;
+         }
+
+         .footer-ul-li:first-child {
+            padding-top: 15px;
+         }
+
+         .footer-ul-li-number::before {
+            right: 95px;
+         }
+
+         .footer-ul-li-mobile::before {
+            content: '';
+            position: absolute;
+            right: -23px;
+            top: -1px;
+            width: 24px;
+            height: 24px;
+            background-image: url('./img/chevronBottom.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+         }
+
+         .footer-ul {
+            flex-direction: column-reverse;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <header>
+      <section class="header-top">
+         <div class="header-top-container">
+            <div class="header-top-main flex">
+               <div class="header-top-left flex">
+                  <button class="header-top-button">
+                     <svg class="header-top-button-icon" width="24" height="24" viewbox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M20.4043 3.14646C20.548 3.29021 20.5905 3.50668 20.5116 3.69404L13.3105 20.7965C13.2214 21.0083 12.9993 21.132 12.7723 21.0965C12.5453 21.0609 12.3718 20.8752 12.3516 20.6463L11.5881 11.9627L2.90448 11.1991C2.67558 11.179 2.48987 11.0055 2.4543 10.7784C2.41873 10.5514 2.54247 10.3294 2.75425 10.2402L19.8567 3.0392C20.0441 2.96031 20.2605 3.00271 20.4043 3.14646ZM5.0003 10.3796L12.0932 11.0032C12.3348 11.0245 12.5263 11.216 12.5475 11.4575L13.1712 18.5505L19.1137 4.43708L5.0003 10.3796Z"
+                           fill="white" />
+                     </svg>
+                     Москва</button>
+                  <button class="header-top-button mr0">
+                     <svg class="header-top-button-icon" width="24" height="24" viewbox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M4.75103 6.99608C4.99019 5.83396 6.01324 5 7.19972 5H13.428C14.4082 5 15.298 5.57281 15.7037 6.46506L17.6092 10.655H18.34H20.0255C21.9585 10.655 23.5255 12.222 23.5255 14.155V15.9737C23.5255 16.2498 23.3016 16.4737 23.0255 16.4737H21.1539C20.9178 17.7968 19.7614 18.8011 18.3705 18.8011C16.9796 18.8011 15.8232 17.7968 15.5871 16.4737H9.51654C9.28044 17.7968 8.12408 18.8011 6.73313 18.8011C5.34219 18.8011 4.18583 17.7968 3.94973 16.4737H2.07812C1.80198 16.4737 1.57812 16.2498 1.57812 15.9737V12.155C1.57812 11.3266 2.2497 10.655 3.07812 10.655H3.99806L4.75103 6.99608ZM22.5255 15.4737H21.1539C20.9178 14.1506 19.7615 13.1462 18.3705 13.1462C16.9795 13.1462 15.8232 14.1506 15.5871 15.4737H9.51655C9.28048 14.1506 8.1241 13.1462 6.73313 13.1462C5.34216 13.1462 4.18579 14.1506 3.94971 15.4737H2.57812V12.155C2.57812 11.8788 2.80198 11.655 3.07812 11.655H18.34H20.0255C21.4062 11.655 22.5255 12.7743 22.5255 14.155V15.4737ZM7.19972 6C6.48783 6 5.874 6.50037 5.73051 7.19765L5.01902 10.655H9.00037L9.00037 6H7.19972ZM10.0004 6V10.655H16.5107L14.7935 6.87904C14.55 6.34369 14.0161 6 13.428 6H10.0004ZM4.90565 15.9737C4.90565 14.9644 5.72384 14.1462 6.73313 14.1462C7.74242 14.1462 8.56062 14.9644 8.56062 15.9737C8.56062 16.983 7.74242 17.8011 6.73313 17.8011C5.72384 17.8011 4.90565 16.983 4.90565 15.9737ZM18.3705 14.1462C17.3612 14.1462 16.543 14.9644 16.543 15.9737C16.543 16.983 17.3612 17.8011 18.3705 17.8011C19.3798 17.8011 20.198 16.983 20.198 15.9737C20.198 14.9644 19.3798 14.1462 18.3705 14.1462ZM6.76087 16.4986C7.05155 16.4986 7.28719 16.263 7.28719 15.9723C7.28719 15.6816 7.05155 15.446 6.76087 15.446C6.47019 15.446 6.23454 15.6816 6.23454 15.9723C6.23454 16.263 6.47019 16.4986 6.76087 16.4986ZM18.8663 15.9723C18.8663 16.263 18.6306 16.4986 18.34 16.4986C18.0493 16.4986 17.8136 16.263 17.8136 15.9723C17.8136 15.6816 18.0493 15.446 18.34 15.446C18.6306 15.446 18.8663 15.6816 18.8663 15.9723Z"
+                           fill="#F0F0F0" />
+                     </svg>
+                     Проверить адрес доставки или самовывоза</button>
+               </div>
+               <div class="header-top-right flex">
+                  <button class="header-top-button mr20">8 800 700-58-00</button>
+                  <button class="header-top-button mr20">
+                     <svg class="header-top-button-icon" width="16" height="16" viewbox="0 0 16 16" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M4.1026 3.03916C5.13245 2.05611 6.534 1.5 8 1.5C9.466 1.5 10.8675 2.05611 11.8974 3.03916C12.9265 4.02145 13.5 5.34862 13.5 6.72727C13.5 8.7447 12.1273 10.6885 10.6451 12.1819C9.91576 12.9168 9.18453 13.518 8.63493 13.9357C8.37521 14.1332 8.15699 14.2889 8 14.3976C7.843 14.2889 7.62479 14.1332 7.36507 13.9357C6.81547 13.518 6.08424 12.9168 5.35489 12.1819C3.8727 10.6885 2.5 8.7447 2.5 6.72727C2.5 5.34862 3.07353 4.02145 4.1026 3.03916ZM7.73128 15.4216C7.73143 15.4217 7.73156 15.4218 8 15L7.73156 15.4218C7.89535 15.5261 8.10465 15.5261 8.26844 15.4218L8 15C8.26844 15.4218 8.26857 15.4217 8.26872 15.4216L8.26915 15.4214L8.27041 15.4206L8.27455 15.4179L8.28922 15.4085L8.30694 15.3969L8.34313 15.3731C8.38962 15.3424 8.45676 15.2974 8.54161 15.2389C8.71124 15.1219 8.95195 14.9509 9.24007 14.7319C9.81547 14.2945 10.5842 13.6628 11.3549 12.8863C12.8727 11.357 14.5 9.16439 14.5 6.72727C14.5 5.06799 13.8092 3.48166 12.5879 2.3158C11.3673 1.1507 9.7166 0.5 8 0.5C6.2834 0.5 4.6327 1.1507 3.41212 2.3158C2.19075 3.48166 1.5 5.06799 1.5 6.72727C1.5 9.16439 3.1273 11.357 4.64512 12.8863C5.41576 13.6628 6.18453 14.2945 6.75993 14.7319C7.04805 14.9509 7.28876 15.1219 7.45839 15.2389C7.54324 15.2974 7.61038 15.3424 7.65687 15.3731C7.68012 15.3885 7.69822 15.4003 7.71078 15.4085L7.72545 15.4179L7.72959 15.4206L7.73085 15.4214L7.73128 15.4216ZM6.5 6.66666C6.5 5.83823 7.17157 5.16666 8 5.16666C8.82843 5.16666 9.5 5.83823 9.5 6.66666C9.5 7.49508 8.82843 8.16666 8 8.16666C7.17157 8.16666 6.5 7.49508 6.5 6.66666ZM8 4.16666C6.61929 4.16666 5.5 5.28594 5.5 6.66666C5.5 8.04737 6.61929 9.16666 8 9.16666C9.38071 9.16666 10.5 8.04737 10.5 6.66666C10.5 5.28594 9.38071 4.16666 8 4.16666Z"
+                           fill="white" />
+                     </svg>
+                     Магазины</button>
+                  <button class="header-top-button mr0">
+                     <svg class="header-top-button-icon" width="16" height="16" viewbox="0 0 16 16" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M13.6216 3.5L2.37846 3.50003L8 7.39187L13.6216 3.5ZM1.5 4.10813L1.5 12C1.5 12.2761 1.72386 12.5 2 12.5H14C14.2761 12.5 14.5 12.2761 14.5 12V4.10813L8.28461 8.41109C8.11338 8.52963 7.88662 8.52963 7.71539 8.41109L1.5 4.10813ZM14 2.5L2 2.50003C1.17157 2.50004 0.5 3.17161 0.5 4.00003V12C0.5 12.8284 1.17157 13.5 2 13.5H14C14.8284 13.5 15.5 12.8284 15.5 12V4C15.5 3.17157 14.8284 2.5 14 2.5Z"
+                           fill="white" />
+                     </svg>
+                     Обратная связь</button>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="header-bottom">
+         <div class="header-bottom-container">
+            <div class="header-bottom-main flex">
+               <button class="btn-green mr32">
+                  <svg class="header-bottom-menu-icon" width="24" height="24" viewbox="0 0 24 24" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M1.00879 6.00903C1.00879 5.45675 1.4565 5.00903 2.00879 5.00903L21.9908 5.00903C22.5431 5.00903 22.9908 5.45675 22.9908 6.00903C22.9908 6.56132 22.5431 7.00903 21.9908 7.00903L2.00879 7.00903C1.4565 7.00903 1.00879 6.56132 1.00879 6.00903ZM1.00879 12.0629C1.00879 11.5106 1.4565 11.0629 2.00879 11.0629H21.9908C22.5431 11.0629 22.9908 11.5106 22.9908 12.0629C22.9908 12.6152 22.5431 13.0629 21.9908 13.0629H2.00879C1.4565 13.0629 1.00879 12.6152 1.00879 12.0629ZM2.00879 17.1167C1.4565 17.1167 1.00879 17.5644 1.00879 18.1167C1.00879 18.669 1.4565 19.1167 2.00879 19.1167H21.9908C22.5431 19.1167 22.9908 18.669 22.9908 18.1167C22.9908 17.5644 22.5431 17.1167 21.9908 17.1167H2.00879Z"
+                        fill="white" />
+                  </svg>
+                  <svg class="header-bottom-menu-icon-green" width="24" height="24" viewbox="0 0 24 24" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M1.00879 6.00903C1.00879 5.45675 1.4565 5.00903 2.00879 5.00903L21.9908 5.00903C22.5431 5.00903 22.9908 5.45675 22.9908 6.00903C22.9908 6.56132 22.5431 7.00903 21.9908 7.00903L2.00879 7.00903C1.4565 7.00903 1.00879 6.56132 1.00879 6.00903ZM1.00879 12.0629C1.00879 11.5106 1.4565 11.0629 2.00879 11.0629H21.9908C22.5431 11.0629 22.9908 11.5106 22.9908 12.0629C22.9908 12.6152 22.5431 13.0629 21.9908 13.0629H2.00879C1.4565 13.0629 1.00879 12.6152 1.00879 12.0629ZM2.00879 17.1167C1.4565 17.1167 1.00879 17.5644 1.00879 18.1167C1.00879 18.669 1.4565 19.1167 2.00879 19.1167H21.9908C22.5431 19.1167 22.9908 18.669 22.9908 18.1167C22.9908 17.5644 22.5431 17.1167 21.9908 17.1167H2.00879Z"
+                        fill="#00985F" />
+                  </svg>
+                  Каталог</button>
+               <a href="#" class="logo mr32">
+                  <svg width="130" height="40" viewbox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M130 39.4312H122.276V30.425H114.99V39.4312H107.231V15.5158H114.99V24.2859H122.276V15.5158H130V39.4312ZM30.6617 10.4898C29.987 11.1645 29.987 12.2776 30.6617 12.9522C31.3363 13.6268 32.4494 13.6268 33.124 12.9522C33.7986 12.2776 33.7986 11.1645 33.124 10.4898C32.4494 9.81521 31.3363 9.81521 30.6617 10.4898ZM36.9019 11.9065C36.9019 11.9065 35.89 19.4623 32.9216 24.2522C32.8132 24.4169 32.6874 24.5811 32.5454 24.7428C29.5456 29.0532 24.4023 29.6154 22.1951 29.6154L25.7369 39.4649H23.5444L19.699 28.7384C19.6653 28.5698 19.699 28.4686 19.8002 28.4348C21.3091 27.8444 21.6697 27.6367 22.7121 27.0363L22.8023 26.9844H22.8207C25.9917 24.9231 27.6972 21.5108 28.4017 19.8334C28.4354 19.7322 28.4354 19.631 28.3342 19.5635C28.3289 19.5618 28.3237 19.5601 28.3185 19.5585C28.1213 19.92 27.9233 20.2815 27.6933 20.6429C24.9273 24.8256 20.7109 27.794 13.8635 27.794H4.38504C4.14893 27.794 4.14893 27.5578 4.25012 27.4566L6.74623 24.9268C3.27192 24.9268 1.24804 22.8692 0.505958 20.5755C0.438495 20.4406 0.371033 20.1707 0.640883 20.1707H11.2662C12.3793 20.1707 13.1552 19.8334 13.796 19.26L22.2626 12.2101C19.0918 14.9424 14.7743 19.1588 10.8614 24.5558C10.8315 24.5957 10.8222 24.6415 10.8275 24.6862C10.8311 24.6548 10.8418 24.6221 10.8614 24.5895C14.7743 19.1925 19.0919 14.9761 22.2626 12.2439C25.0285 9.84894 26.9175 8.56715 26.9175 8.56715C28.233 7.72387 29.6834 7.28537 31.3363 7.28537C34.1178 7.28537 36.0003 8.95008 36.5539 9.99713L36.5646 9.98389H40.0389C40.275 9.98389 40.3425 10.2875 40.1401 10.3887L36.9019 11.8728L35.7551 11.3669C35.659 11.3429 35.6142 11.2505 35.6451 11.1506C35.5838 11.2627 35.6483 11.3739 35.7551 11.4006L36.9019 11.9065ZM35.3166 23.2402C33.6975 26.6133 32.1458 28.2999 28.5703 30.0202L31.9097 39.4312H41.287C39.3643 33.6632 37.273 28.2324 35.3166 23.2402ZM9.47846 39.4312H0C1.15237 35.7765 2.30473 32.5718 3.36299 29.6288L3.44058 29.413H12.6829L9.47846 39.4312ZM11.0301 18.4841C11.7047 18.4841 12.3119 18.3829 12.8179 17.9444L17.6077 13.9979C18.5859 11.2656 19.6653 8.46596 20.7447 6.13851C21.3181 7.38656 21.8241 8.63462 22.3638 9.98386C24.9948 7.82507 26.6139 6.54328 28.7727 5.93612C27.4235 3.00151 26.479 0.977637 26.0405 0.0668945H15.4152C14.5044 1.95584 11.1313 8.97193 7.18474 18.4841H11.0301ZM71.9149 39.4312L71.4089 36.8002C69.7224 38.5879 67.631 39.9372 63.8531 39.9034C60.6487 39.9034 58.4562 38.824 57.2756 36.6652C55.5215 38.5205 53.329 39.9034 49.5511 39.9034C44.3228 39.9034 41.8267 37.07 41.8267 31.302V15.5158H49.5511V30.29C49.5511 32.5163 50.6642 33.7644 52.6544 33.7644C53.9362 33.7644 55.4878 32.9211 56.1287 32.1115V15.5158H63.8531V30.29C63.8531 32.5163 65.0337 33.7644 67.1925 33.7644C68.3731 33.7644 69.7898 32.9211 70.4307 32.1115V15.5158H78.1889V39.4312H71.9149ZM92.2211 33.7644C94.11 33.7644 95.2569 32.9211 95.9652 32.1115V21.5537C94.9196 21.3175 94.1775 21.2164 92.727 21.2164C90.2309 21.2164 88.9829 23.5101 88.9829 28.0975C88.9829 31.8079 90.1297 33.7644 92.2211 33.7644ZM89.8599 39.9372H89.6238C83.8895 39.9034 80.9211 36.3954 80.9211 28.4011C80.9211 19.7659 85.1375 15.0435 92.862 15.0435C98.2927 15.0435 101.194 15.7182 103.723 16.5277V39.4312H97.4157L97.0109 36.8002C95.6954 38.7228 93.3005 39.9034 89.8599 39.9372ZM26.7826 30.6611C26.1754 30.8298 25.467 30.9647 24.725 31.0659L27.727 39.4312H29.9196L26.7826 30.6611ZM31.9772 10.4899C31.6736 10.7935 31.6736 11.3332 31.9772 11.6368C32.2808 11.9403 32.8205 11.9403 33.1241 11.6368C33.4276 11.3332 33.4276 10.7935 33.1241 10.4899C32.8205 10.1863 32.2808 10.1863 31.9772 10.4899Z"
+                        fill="white" />
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M31.9767 10.4899C31.6731 10.7935 31.6731 11.3332 31.9767 11.6368C32.2803 11.9403 32.82 11.9403 33.1236 11.6368C33.4271 11.3332 33.4271 10.7935 33.1236 10.4899C32.82 10.1863 32.2803 10.1863 31.9767 10.4899Z"
+                        fill="white" />
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M40.0386 9.98389H36.5643L35.721 11.0296C35.5861 11.1645 35.6198 11.3331 35.7547 11.3669L36.9016 11.8728L40.1398 10.3887C40.3422 10.2875 40.2747 9.98389 40.0386 9.98389ZM27.0858 26.9844H22.802C21.6888 27.6253 21.3515 27.8277 19.7999 28.4348C19.6987 28.4686 19.665 28.5698 19.6987 28.7384L23.5441 39.4649H25.7366L22.1948 29.6154C24.4885 29.6154 29.953 29.0083 32.8876 24.2184C32.0106 25.6352 29.8855 26.9844 27.0858 26.9844ZM33.1237 11.6367C32.8201 11.9403 32.2804 11.9403 31.9769 11.6367C31.6733 11.3331 31.6733 10.7934 31.9769 10.4899C32.2804 10.1863 32.8201 10.1863 33.1237 10.4899C32.4491 9.81523 31.336 9.81523 30.6613 10.4899C29.9867 11.1645 29.9867 12.2776 30.6613 12.9522C31.336 13.6269 32.4491 13.6269 33.1237 12.9522C33.7983 12.2776 33.7983 11.1645 33.1237 10.4899C33.4273 10.8272 33.4273 11.3331 33.1237 11.6367ZM24.7246 31.0659C25.4667 30.9647 26.1751 30.8298 26.7822 30.6611L29.9192 39.4312H27.7267L24.7246 31.0659ZM27.693 20.6429C24.927 24.8256 20.7106 27.794 13.8632 27.794H4.38474C4.14862 27.794 4.14862 27.5578 4.24981 27.4566L6.74592 24.9268C3.27161 24.9268 1.24774 22.8692 0.505653 20.5755C0.43819 20.4406 0.370728 20.1707 0.640577 20.1707H11.2659C12.379 20.1707 13.1549 19.8334 13.7957 19.26L22.2623 12.2101C19.0915 14.9424 14.7739 19.1588 10.8611 24.5558C10.7599 24.6907 10.8949 24.8931 11.0298 24.8931H16.0557C19.3614 24.8931 23.6452 24.2859 28.064 19.5973C28.1652 19.4961 28.2327 19.4961 28.3339 19.5298C28.1315 19.9009 27.9291 20.2719 27.693 20.6429Z"
+                        fill="#00985F" />
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M122.276 39.4312H130V15.5158H122.276V24.2859H114.99V15.5158H107.231V39.4312H114.99V30.425H122.276V39.4312ZM30.6617 12.9522C29.987 12.2776 29.987 11.1645 30.6617 10.4898C31.3363 9.81521 32.4494 9.81521 33.124 10.4898C33.7986 11.1645 33.7986 12.2776 33.124 12.9522C32.4494 13.6268 31.3363 13.6268 30.6617 12.9522ZM32.9216 24.2522C35.89 19.4623 36.9019 11.9065 36.9019 11.9065L35.7551 11.4006C35.6201 11.3668 35.5527 11.1982 35.7213 11.0633L36.5646 10.0176C36.0249 8.97193 34.136 7.28537 31.3363 7.28537C29.6834 7.28537 28.233 7.72387 26.9175 8.56715C26.9175 8.56715 25.0285 9.84894 22.2626 12.2439C19.0919 14.9761 14.7743 19.1925 10.8614 24.5895C10.7603 24.7581 10.8952 24.9268 11.0301 24.9268H16.056C19.3617 24.9268 23.6456 24.3196 28.0643 19.631C28.1655 19.5298 28.233 19.5298 28.3342 19.5635C28.4354 19.631 28.4354 19.7322 28.4017 19.8334C27.6933 21.5199 25.973 24.9605 22.7686 27.0181H27.0524C29.8858 26.9844 32.0109 25.6351 32.9216 24.2522ZM28.5703 30.0202C32.1458 28.2999 33.6975 26.6133 35.3166 23.2402C37.273 28.2324 39.3643 33.6632 41.287 39.4312H31.9097L28.5703 30.0202ZM0 39.4312H9.47846L12.6829 29.413H3.44058C2.36118 32.4151 1.18059 35.687 0 39.4312ZM12.8179 17.9444C12.3119 18.3829 11.7047 18.4841 11.0301 18.4841H7.18474C11.1313 8.97193 14.5044 1.95584 15.4152 0.0668945H26.0405C26.479 0.977637 27.4235 3.00151 28.7727 5.93612C26.6139 6.54328 24.9948 7.82507 22.3638 9.98386C21.8241 8.63462 21.3181 7.38656 20.7447 6.13851C19.6653 8.46596 18.5859 11.2656 17.6077 13.9979L12.8179 17.9444ZM71.4089 36.8002L71.9149 39.4312H78.1889V15.5158H70.4307V32.1115C69.7898 32.9211 68.3731 33.7644 67.1925 33.7644C65.0337 33.7644 63.8531 32.5163 63.8531 30.29V15.5158H56.1287V32.1115C55.4878 32.9211 53.9362 33.7644 52.6544 33.7644C50.6642 33.7644 49.5511 32.5163 49.5511 30.29V15.5158H41.8267V31.302C41.8267 37.07 44.3228 39.9034 49.5511 39.9034C53.329 39.9034 55.5215 38.5205 57.2756 36.6652C58.4562 38.824 60.6487 39.9034 63.8531 39.9034C67.631 39.9372 69.7224 38.5879 71.4089 36.8002ZM95.9652 32.1115C95.2569 32.9211 94.11 33.7644 92.2211 33.7644C90.1297 33.7644 88.9829 31.8079 88.9829 28.0975C88.9829 23.5101 90.2309 21.2164 92.727 21.2164C94.1775 21.2164 94.9196 21.3175 95.9652 21.5537V32.1115ZM89.6238 39.9372H89.8599C93.3005 39.9034 95.6954 38.7228 97.0109 36.8002L97.4157 39.4312H103.723V16.5277C101.194 15.7182 98.2927 15.0435 92.862 15.0435C85.1375 15.0435 80.9211 19.7659 80.9211 28.4011C80.9211 36.3954 83.8895 39.9034 89.6238 39.9372Z"
+                        fill="#E0001A" />
+                  </svg>
+               </a>
+               <div class="header-bottom-search flex mr32">
+                  <input style="outline:none;" class="header-bottom-search-input" type="text"
+                     placeholder="Поиск по товарам…">
+                  <button class="header-bottom-search-input-button">Найти</button>
+               </div>
+               <button class="header-bottom-profile mr16">
+                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M8.5 6C8.5 4.067 10.067 2.5 12 2.5C13.933 2.5 15.5 4.067 15.5 6C15.5 7.933 13.933 9.5 12 9.5C10.067 9.5 8.5 7.933 8.5 6ZM12 1.5C9.51472 1.5 7.5 3.51472 7.5 6C7.5 8.48528 9.51472 10.5 12 10.5C14.4853 10.5 16.5 8.48528 16.5 6C16.5 3.51472 14.4853 1.5 12 1.5ZM4.5 19.5C4.5 17.5798 4.98043 16.0558 5.66603 15.0274C6.35605 13.9923 7.21867 13.5 8 13.5C8.88201 13.5 9.30025 13.7091 9.7689 13.9435L9.77639 13.9472C10.3047 14.2114 10.8867 14.5 12 14.5C13.1133 14.5 13.6953 14.2114 14.2236 13.9472L14.2311 13.9435C14.6997 13.7091 15.118 13.5 16 13.5C16.7813 13.5 17.6439 13.9923 18.334 15.0274C19.0196 16.0558 19.5 17.5798 19.5 19.5V20.5H4.5V19.5ZM8 12.5C6.78133 12.5 5.64395 13.2577 4.83397 14.4727C4.01957 15.6943 3.5 17.4203 3.5 19.5V21C3.5 21.2761 3.72386 21.5 4 21.5H20C20.2761 21.5 20.5 21.2761 20.5 21V19.5C20.5 17.4203 19.9804 15.6943 19.166 14.4727C18.3561 13.2577 17.2187 12.5 16 12.5C14.8867 12.5 14.3047 12.7886 13.7764 13.0528L13.7689 13.0565C13.3003 13.2909 12.882 13.5 12 13.5C11.118 13.5 10.6997 13.2909 10.2311 13.0565L10.2236 13.0528C9.69531 12.7886 9.11329 12.5 8 12.5Z"
+                        fill="#333333" />
+                  </svg>
+                  Константин</button>
+               <button class="header-bottom-cart"><svg width="24" height="24" viewbox="0 0 24 24" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M18.4999 17.2575C18.7761 17.2575 18.9999 17.0336 18.9999 16.7575C18.9999 16.4813 18.7761 16.2575 18.4999 16.2575L8.3795 16.2575L7.70176 12.89H7.72036H7.75195H7.78357H7.8152H7.84686H7.87854H7.91025H7.94198H7.97373H8.0055H8.0373H8.06911H8.10095H8.13281H8.16469H8.19658H8.2285H8.26044H8.29239H8.32436H8.35636H8.38836H8.42039H8.45243H8.4845H8.51657H8.54866H8.58077H8.6129H8.64504H8.67719H8.70936H8.74154H8.77374H8.80594H8.83817H8.8704H8.90265H8.9349H8.96717H8.99946H9.03175H9.06405H9.09636H9.12869H9.16102H9.19336H9.22571H9.25807H9.29043H9.32281H9.35519H9.38758H9.41997H9.45238H9.48479H9.5172H9.54962H9.58204H9.61447H9.6469H9.67934H9.71178H9.74422H9.77667H9.80912H9.84157H9.87403H9.90648H9.93894H9.97139H10.0039H10.0363H10.0688H10.1012H10.1337H10.1661H10.1986H10.231H10.2635H10.2959H10.3284H10.3608H10.3933H10.4257H10.4581H10.4905H10.523H10.5554H10.5878H10.6202H10.6526H10.685H10.7173H10.7497H10.7821H10.8144H10.8468H10.8791H10.9115H10.9438H10.9761H11.0084H11.0407H11.073H11.1052H11.1375H11.1697H11.202H11.2342H11.2664H11.2986H11.3308H11.3629H11.3951H11.4272H11.4594H11.4915H11.5236H11.5556H11.5877H11.6197H11.6518H11.6838H11.7158H11.7477H11.7797H11.8116H11.8435H11.8754H11.9073H11.9392H11.971H12.0028H12.0346H12.0664H12.0981H12.1299H12.1616H12.1932H12.2249H12.2565H12.2881H12.3197H12.3513H12.3828H12.4143H12.4458H12.4773H12.5087H12.5401H12.5715H12.6029H12.6342H12.6655H12.6967H12.728H12.7592H12.7904H12.8215H12.8526H12.8837H12.9148H12.9458H12.9768H13.0078H13.0387H13.0696H13.1005H13.1313H13.1621H13.1929H13.2236H13.2543H13.2849H13.3156H13.3461H13.3767H13.4072H13.4377H13.4681H13.4985H13.5289H13.5592H13.5895H13.6198H13.65H13.6802H13.7103H13.7404H13.7704H13.8005H13.8304H13.8603H13.8902H13.9201H13.9499H13.9796H14.0094H14.039H14.0686H14.0982H14.1278H14.1573H14.1867H14.2161H14.2455H14.2748H14.304H14.3333H14.3624H14.3915H14.4206H14.4496H14.4786H14.5075H14.5364H14.5652H14.594H14.6227H14.6514H14.68H14.7086H14.7371H14.7656H14.794H14.8224H14.8507H14.8789H14.9071H14.9353H14.9633H14.9914H15.0194H15.0473H15.0751H15.103H15.1307H15.1584H15.1861H15.2136H15.2412H15.2686H15.296H15.3234H15.3507H15.3779H15.4051H15.4322H15.4592H15.4862H15.5131H15.54H15.5668H15.5935H15.6202H15.6468H15.6733H15.6998H15.7262H15.7526H15.7789H15.8051H15.8312H15.8573H15.8834H15.9093H15.9352H15.961H15.9868H16.0125H16.0381H16.0636H16.0891H16.1145H16.1399H16.1651H16.1903H16.2154H16.2405H16.2655H16.2904H16.3152H16.34H16.3647H16.3893H16.4139H16.4383H16.4627H16.4871H16.5113H16.5355H16.5596H16.5836H16.6075H16.6314H16.6552H16.6789H16.7025H16.7261H16.7496H16.773H16.7963H16.8195H16.8427H16.8658H16.8888H16.9117H16.9345H16.9573H16.98H17.0025H17.0251H17.0475H17.0698H17.0921H17.1142H17.1363H17.1583H17.1803H17.2021H17.2238H17.2455H17.2671H17.2886H17.31H17.3313H17.3525H17.3736H17.3947H17.4156H17.4365H17.4573H17.478H17.4986H17.5191H17.5395H17.5598H17.5801H17.6002H17.6203H17.6402H17.6601H17.6799H17.6996H17.7191H17.7386H17.758H17.7773H17.7965H17.8156H17.8346H17.8536H17.8724H17.8911H17.9097H17.9282H17.9467H17.965H17.9832H18.0014H18.0194H18.0373H18.0552H18.0729H18.0905H18.108H18.1255H18.1428H18.16H18.1771H18.1941H18.2111H18.2279H18.2446H18.2612H18.2777H18.2941H18.3103H18.3265H18.3426H18.3586H18.3744H18.3902H18.4058H18.4213H18.4368H18.4521H18.4673H18.4824H18.4974H18.5123H18.527H18.5417H18.5562H18.5707H18.585H18.5992H18.6133H18.6273H18.6412H18.6549H18.6686H18.6821H18.6955H18.7088H18.722H18.7351H18.7481H18.7609H18.7736H18.7862H18.7987H18.8111H18.8234H18.8355H18.8475H18.8594H18.8712H18.8829H18.8944H18.9058H18.9171H18.9283H18.9393H18.9503H18.9611H18.9718H18.9823H18.9928H19.0031H19.0133H19.0234H19.0333H19.0432H19.0529H19.0624H19.0719H19.0812H19.0904H19.0995H19.1084H19.1172H19.1259H19.1344H19.1429H19.1512H19.1593H19.1674H19.1753H19.1831H19.1907H19.1982H19.2056H19.2129H19.22H19.227H19.2338H19.2406H19.2471H19.2536H19.2599H19.2661H19.2722H19.2781H19.2839H19.2895H19.295H19.3004H19.3056H19.3107H19.3157H19.3205H19.3252H19.3297H19.3341H19.3384H19.3425H19.3465H19.3504H19.3541H19.3576H19.3611H19.3643H19.3675H19.3705H19.3733H19.376H19.3786H19.381H19.3833H19.3854H19.3874H19.3893H19.391H19.3925H19.3939H19.3952H19.3963H19.3973H19.3981H19.3988H19.3993H19.3997H19.3999L19.4 12.39V12.89C19.6293 12.89 19.8293 12.734 19.885 12.5115L21.485 6.12146C21.5224 5.97207 21.4889 5.81378 21.3941 5.69238C21.2994 5.57098 21.154 5.50001 21 5.50001H6.21444L5.49017 1.90135C5.44319 1.66792 5.23811 1.5 5 1.5H1C0.723858 1.5 0.5 1.72386 0.5 2C0.5 2.27614 0.723858 2.5 0.999999 2.5H4.59061L7.47994 16.8561C7.52692 17.0895 7.73199 17.2575 7.97011 17.2575L18.4999 17.2575ZM6.4157 6.50001H20.3593L19.0097 11.89H19.0031H18.9928H18.9823H18.9718H18.9611H18.9503H18.9393H18.9283H18.9171H18.9058H18.8944H18.8829H18.8712H18.8594H18.8475H18.8355H18.8234H18.8111H18.7987H18.7862H18.7736H18.7609H18.7481H18.7351H18.722H18.7088H18.6955H18.6821H18.6686H18.6549H18.6412H18.6273H18.6133H18.5992H18.585H18.5707H18.5562H18.5417H18.527H18.5123H18.4974H18.4824H18.4673H18.4521H18.4368H18.4213H18.4058H18.3902H18.3744H18.3586H18.3426H18.3265H18.3103H18.2941H18.2777H18.2612H18.2446H18.2279H18.2111H18.1941H18.1771H18.16H18.1428H18.1255H18.108H18.0905H18.0729H18.0552H18.0373H18.0194H18.0014H17.9832H17.965H17.9467H17.9282H17.9097H17.8911H17.8724H17.8536H17.8346H17.8156H17.7965H17.7773H17.758H17.7386H17.7191H17.6996H17.6799H17.6601H17.6402H17.6203H17.6002H17.5801H17.5598H17.5395H17.5191H17.4986H17.478H17.4573H17.4365H17.4156H17.3947H17.3736H17.3525H17.3313H17.31H17.2886H17.2671H17.2455H17.2238H17.2021H17.1803H17.1583H17.1363H17.1142H17.0921H17.0698H17.0475H17.0251H17.0025H16.98H16.9573H16.9345H16.9117H16.8888H16.8658H16.8427H16.8195H16.7963H16.773H16.7496H16.7261H16.7025H16.6789H16.6552H16.6314H16.6075H16.5836H16.5596H16.5355H16.5113H16.4871H16.4627H16.4383H16.4139H16.3893H16.3647H16.34H16.3152H16.2904H16.2655H16.2405H16.2154H16.1903H16.1651H16.1399H16.1145H16.0891H16.0636H16.0381H16.0125H15.9868H15.961H15.9352H15.9093H15.8834H15.8573H15.8312H15.8051H15.7789H15.7526H15.7262H15.6998H15.6733H15.6468H15.6202H15.5935H15.5668H15.54H15.5131H15.4862H15.4592H15.4322H15.4051H15.3779H15.3507H15.3234H15.296H15.2686H15.2412H15.2136H15.1861H15.1584H15.1307H15.103H15.0751H15.0473H15.0194H14.9914H14.9633H14.9353H14.9071H14.8789H14.8507H14.8224H14.794H14.7656H14.7371H14.7086H14.68H14.6514H14.6227H14.594H14.5652H14.5364H14.5075H14.4786H14.4496H14.4206H14.3915H14.3624H14.3333H14.304H14.2748H14.2455H14.2161H14.1867H14.1573H14.1278H14.0982H14.0686H14.039H14.0094H13.9796H13.9499H13.9201H13.8902H13.8603H13.8304H13.8005H13.7704H13.7404H13.7103H13.6802H13.65H13.6198H13.5895H13.5592H13.5289H13.4985H13.4681H13.4377H13.4072H13.3767H13.3461H13.3156H13.2849H13.2543H13.2236H13.1929H13.1621H13.1313H13.1005H13.0696H13.0387H13.0078H12.9768H12.9458H12.9148H12.8837H12.8526H12.8215H12.7904H12.7592H12.728H12.6967H12.6655H12.6342H12.6029H12.5715H12.5401H12.5087H12.4773H12.4458H12.4143H12.3828H12.3513H12.3197H12.2881H12.2565H12.2249H12.1932H12.1616H12.1299H12.0981H12.0664H12.0346H12.0028H11.971H11.9392H11.9073H11.8754H11.8435H11.8116H11.7797H11.7477H11.7158H11.6838H11.6518H11.6197H11.5877H11.5556H11.5236H11.4915H11.4594H11.4272H11.3951H11.3629H11.3308H11.2986H11.2664H11.2342H11.202H11.1697H11.1375H11.1052H11.073H11.0407H11.0084H10.9761H10.9438H10.9115H10.8791H10.8468H10.8144H10.7821H10.7497H10.7173H10.685H10.6526H10.6202H10.5878H10.5554H10.523H10.4905H10.4581H10.4257H10.3933H10.3608H10.3284H10.2959H10.2635H10.231H10.1986H10.1661H10.1337H10.1012H10.0688H10.0363H10.0039H9.97139H9.93894H9.90648H9.87403H9.84157H9.80912H9.77667H9.74422H9.71178H9.67934H9.6469H9.61447H9.58204H9.54962H9.5172H9.48479H9.45238H9.41997H9.38758H9.35519H9.32281H9.29043H9.25807H9.22571H9.19336H9.16102H9.12869H9.09636H9.06405H9.03175H8.99946H8.96717H8.9349H8.90265H8.8704H8.83817H8.80594H8.77374H8.74154H8.70936H8.67719H8.64504H8.6129H8.58077H8.54866H8.51657H8.4845H8.45243H8.42039H8.38836H8.35636H8.32436H8.29239H8.26044H8.2285H8.19658H8.16469H8.13281H8.10095H8.06911H8.0373H8.0055H7.97373H7.94198H7.91025H7.87854H7.84686H7.8152H7.78357H7.75195H7.72036H7.6888H7.65726H7.62575H7.59426H7.5628H7.53137H7.5005L6.4157 6.50001ZM11 21.5C11 22.3284 10.3284 23 9.49996 23C8.67154 23 7.99996 22.3284 7.99996 21.5C7.99996 20.6716 8.67154 20 9.49996 20C10.3284 20 11 20.6716 11 21.5ZM18 21.5C18 22.3284 17.3284 23 16.5 23C15.6715 23 15 22.3284 15 21.5C15 20.6716 15.6715 20 16.5 20C17.3284 20 18 20.6716 18 21.5Z"
+                        fill="#333333" />
+                  </svg>
+                  <span class="header-bottom-cart-text">Корзина</span></button>
+            </div>
+            <div class="header-bottom-search-mobile flex mr32">
+               <input style="outline:none;" class="header-bottom-search-input" type="text"
+                  placeholder="Поиск по товарам…">
+               <button class="header-bottom-search-input-button">Найти</button>
+            </div>
+         </div>
+      </section>
+   </header>
+   <div class="main">
+      <section class="hero">
+      </section>
+      <section class="swiper">
+         <div class="container">
+            <img class="swiper-h1" src="./img/swiper-h1.png" alt="">
+            <img class="swiper-h1-mobile swiper-h1" src="./img/swiper-h1-mobile.png" alt="">
+            <ul class="swiper-ul flex">
+               <li class="swiper-ul-li swiper-ul-li-checked">
+                  Новогодние сказки
+               </li>
+               <li class="swiper-ul-li ">
+                  <a href="./green-js.html">Зимний лес</a>
+               </li>
+               <li class="swiper-ul-li">
+                  Роскошный вечер
+               </li>
+               <li class="swiper-ul-li">
+                  Домик в лесу
+               </li>
+               <li class="swiper-ul-li">
+                  В стране чудес
+               </li>
+            </ul>
+            <div class="swiper-main flex">
+               <span class="swiper-main-count"></span>
+               <div class="swiper-main-left">
+
+                  <div class="slider">
+                     <div class="slider-list">
+                        <div class="slider-track">
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                           <div class="slide">
+                              <div class="slide-img"></div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="slider-arrows">
+                        <button type="button" class="prev">
+                           <svg class="prev-svg" style="pointer-events: none;" width="64" height="64"
+                              viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle cx="32" cy="32" r="32" fill="#333333" fill-opacity="0.56" />
+                              <g filter="url(#filter0_d_1_826)">
+                                 <circle cx="32" cy="32" r="18" fill="white" />
+                              </g>
+                              <path
+                                 d="M35.4237 26.6961C35.7077 26.412 35.7077 25.9516 35.4237 25.6675C35.1397 25.3835 34.6792 25.3835 34.3952 25.6675L28.577 31.4857C28.293 31.7697 28.293 32.2302 28.577 32.5142L34.3952 38.3324C34.6792 38.6164 35.1397 38.6164 35.4237 38.3324C35.7077 38.0484 35.7077 37.5879 35.4237 37.3039L30.1198 32L35.4237 26.6961Z"
+                                 fill="#666666" />
+                              <defs>
+                                 <filter id="filter0_d_1_826" x="10" y="14" width="44" height="44"
+                                    filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feflood flood-opacity="0" result="BackgroundImageFix" />
+                                    <fecolormatrix in="SourceAlpha" type="matrix"
+                                       values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feoffset dy="4" />
+                                    <fegaussianblur stddeviation="2" />
+                                    <fecolormatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                    <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_826" />
+                                    <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_826"
+                                       result="shape" />
+                                 </filter>
+                              </defs>
+                           </svg>
+                           <svg class="prev-svg-mobile" style="pointer-events: none;" width="16" height="16"
+                              viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                 d="M11.4233 13.3039C11.7074 13.5879 11.7074 14.0484 11.4233 14.3324C11.1393 14.6164 10.6788 14.6164 10.3948 14.3324L4.57664 8.51421C4.29262 8.2302 4.29262 7.76971 4.57664 7.48569L10.3948 1.66751C10.6788 1.3835 11.1393 1.3835 11.4233 1.66751C11.7074 1.95153 11.7074 2.41202 11.4233 2.69603L6.11942 7.99995L11.4233 13.3039Z"
+                                 fill="white" />
+                           </svg>
+                        </button>
+                        <button type="button" class="next">
+                           <svg class="next-svg" style="pointer-events: none;" width="64" height="64"
+                              viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle cx="32" cy="32" r="32" transform="rotate(-180 32 32)" fill="#333333"
+                                 fill-opacity="0.56" />
+                              <g filter="url(#filter0_d_1_830)">
+                                 <circle cx="32" cy="32" r="18" transform="rotate(-180 32 32)" fill="white" />
+                              </g>
+                              <path
+                                 d="M28.5768 37.3039C28.2928 37.588 28.2928 38.0484 28.5768 38.3325C28.8608 38.6165 29.3213 38.6165 29.6053 38.3325L35.4235 32.5143C35.7075 32.2303 35.7075 31.7698 35.4235 31.4858L29.6053 25.6676C29.3213 25.3836 28.8608 25.3836 28.5768 25.6676C28.2928 25.9516 28.2928 26.4121 28.5768 26.6961L33.8807 32L28.5768 37.3039Z"
+                                 fill="#666666" />
+                              <defs>
+                                 <filter id="filter0_d_1_830" x="10" y="14" width="44" height="44"
+                                    filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feflood flood-opacity="0" result="BackgroundImageFix" />
+                                    <fecolormatrix in="SourceAlpha" type="matrix"
+                                       values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feoffset dy="4" />
+                                    <fegaussianblur stddeviation="2" />
+                                    <fecolormatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+                                    <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_830" />
+                                    <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_830"
+                                       result="shape" />
+                                 </filter>
+                              </defs>
+                           </svg>
+                           <svg class="next-svg-mobile" style="pointer-events: none;" width="16" height="16"
+                              viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                 d="M4.57665 2.69612C4.29264 2.4121 4.29264 1.95162 4.57665 1.6676C4.86067 1.38359 5.32115 1.38359 5.60517 1.6676L11.4234 7.48579C11.7074 7.7698 11.7074 8.23029 11.4234 8.5143L5.60517 14.3325C5.32115 14.6165 4.86067 14.6165 4.57665 14.3325C4.29264 14.0485 4.29264 13.588 4.57665 13.304L9.88058 8.00004L4.57665 2.69612Z"
+                                 fill="white" />
+                           </svg>
+
+                        </button>
+                     </div>
+                  </div>
+               </div>
+               <div class="swiper-main-right">
+                  <div class="swiper-main-right-descr flex">
+                     <h2 class="swiper-main-right-descr-title">Коллекция</h2>
+                     <img class="swiper-main-right-descr-img" src="./img/swiper-right-bg-red.png" alt="background">
+                     <p class="swiper-main-right-descr-text">Подарите домой радостное настроение Рождества. Красные и
+                        белые
+                        рождественские мотивы создадут
+                        теплую семейную атмосферу, а свет свечей привнесет немного волшебства. Традиционно нельзя
+                        пропустить Санту, который выглядит великолепно, как каждый год!</p>
+                     <button class="swiper-main-right-descr-btn">Смотреть</button>
+                  </div>
+                  <div class="swiper-main-right-background"></div>
+                  <div class="swiper-main-right-background-mobile"></div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="cards">
+         <div class="container">
+            <ul class="cards-ul flex">
+               <li class="cards-ul-li">
+                  <div class="cards-ul-li-front cards-ul-li-card">
+                     <div class="cards-ul-li-front-img cards-ul-li-front-img1"></div>
+                     <div class="cards-ul-li-front-bg"></div>
+                     <button class="cards-ul-li-add">
+                     </button>
+                     <span class="cards-ul-li-snowflake1"></span>
+                     <span class="card-ul-li-title">Новогодние
+                        декорации</span>
+                  </div>
+                  <div class="cards-ul-li-back cards-ul-li-card">
+                     <div class="cards-ul-li-back-content flex">
+                        <button class="cards-ul-li-back-content-close">
+                           <svg width="48" height="48" viewbox="0 0 48 48" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                 d="M34.8538 13.8536C35.0491 13.6583 35.0491 13.3417 34.8538 13.1464C34.6585 12.9512 34.342 12.9512 34.1467 13.1464L24.0001 23.293L13.8536 13.1464C13.6583 12.9512 13.3417 12.9512 13.1464 13.1464C12.9512 13.3417 12.9512 13.6583 13.1464 13.8536L23.293 24.0001L13.1464 34.1467C12.9512 34.342 12.9512 34.6585 13.1464 34.8538C13.3417 35.0491 13.6583 35.0491 13.8536 34.8538L24.0001 24.7072L34.1467 34.8538C34.342 35.0491 34.6585 35.0491 34.8538 34.8538C35.0491 34.6585 35.0491 34.342 34.8538 34.1467L24.7072 24.0001L34.8538 13.8536Z"
+                                 fill="white" />
+                           </svg>
+                        </button>
+                        <h3 class="cards-ul-li-back-content-h3">Новогодние декорации</h3>
+                        <a href="#" class="cards-ul-li-back-content-text">Украшения на елку</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Елки, ветки</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Декор для окон</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Новогодние фигуры</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Электрогирлянды и световой декор</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Цветы</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Новогодние носки</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Свечи</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Подсвечники</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="cards-ul-li">
+                  <div class="cards-ul-li-front cards-ul-li-card">
+                     <div class="cards-ul-li-front-img cards-ul-li-front-img2"></div>
+                     <div class="cards-ul-li-front-bg cards-ul-li-front-bg-reverse "></div>
+                     <button class="cards-ul-li-add">
+                     </button>
+                     <span class="cards-ul-li-snowflake2"></span>
+                     <span style="bottom: 18px;" class="card-ul-li-title">Посуда</span>
+                  </div>
+                  <div class="cards-ul-li-back cards-ul-li-card">
+                     <div class="cards-ul-li-back-content flex">
+                        <button class="cards-ul-li-back-content-close">
+                           <svg width="48" height="48" viewbox="0 0 48 48" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                 d="M34.8538 13.8536C35.0491 13.6583 35.0491 13.3417 34.8538 13.1464C34.6585 12.9512 34.342 12.9512 34.1467 13.1464L24.0001 23.293L13.8536 13.1464C13.6583 12.9512 13.3417 12.9512 13.1464 13.1464C12.9512 13.3417 12.9512 13.6583 13.1464 13.8536L23.293 24.0001L13.1464 34.1467C12.9512 34.342 12.9512 34.6585 13.1464 34.8538C13.3417 35.0491 13.6583 35.0491 13.8536 34.8538L24.0001 24.7072L34.1467 34.8538C34.342 35.0491 34.6585 35.0491 34.8538 34.8538C35.0491 34.6585 35.0491 34.342 34.8538 34.1467L24.7072 24.0001L34.8538 13.8536Z"
+                                 fill="white" />
+                           </svg>
+                        </button>
+                        <h3 class="cards-ul-li-back-content-h3">Новогодние декорации</h3>
+                        <a href="#" class="cards-ul-li-back-content-text">Украшения на елку</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Елки, ветки</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Декор для окон</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Новогодние фигуры</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Электрогирлянды и световой декор</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Цветы</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Новогодние носки</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Свечи</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Подсвечники</a>
+                     </div>
+                  </div>
+               </li>
+               <li class="cards-ul-li">
+                  <div class="cards-ul-li-front cards-ul-li-card">
+                     <div class="cards-ul-li-front-img cards-ul-li-front-img3"></div>
+                     <div class="cards-ul-li-front-bg"></div>
+                     <button class="cards-ul-li-add">
+                     </button>
+                     <span class="cards-ul-li-snowflake3"></span>
+                     <span class="card-ul-li-title">текстиль
+                        для дома</span>
+                  </div>
+                  <div class="cards-ul-li-back cards-ul-li-card">
+                     <div class="cards-ul-li-back-content flex">
+                        <button class="cards-ul-li-back-content-close">
+                           <svg width="48" height="48" viewbox="0 0 48 48" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                 d="M34.8538 13.8536C35.0491 13.6583 35.0491 13.3417 34.8538 13.1464C34.6585 12.9512 34.342 12.9512 34.1467 13.1464L24.0001 23.293L13.8536 13.1464C13.6583 12.9512 13.3417 12.9512 13.1464 13.1464C12.9512 13.3417 12.9512 13.6583 13.1464 13.8536L23.293 24.0001L13.1464 34.1467C12.9512 34.342 12.9512 34.6585 13.1464 34.8538C13.3417 35.0491 13.6583 35.0491 13.8536 34.8538L24.0001 24.7072L34.1467 34.8538C34.342 35.0491 34.6585 35.0491 34.8538 34.8538C35.0491 34.6585 35.0491 34.342 34.8538 34.1467L24.7072 24.0001L34.8538 13.8536Z"
+                                 fill="white" />
+                           </svg>
+                        </button>
+                        <h3 class="cards-ul-li-back-content-h3">Новогодние декорации</h3>
+                        <a href="#" class="cards-ul-li-back-content-text">Украшения на елку</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Елки, ветки</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Декор для окон</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Новогодние фигуры</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Электрогирлянды и световой декор</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Цветы</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Новогодние носки</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Свечи</a>
+                        <a href="#" class="cards-ul-li-back-content-text">Подсвечники</a>
+                     </div>
+                  </div>
+               </li>
+            </ul>
+            <img class="cards-bg-bottom" src="./img/cards-bg-bottom.png" alt="background">
+         </div>
+      </section>
+      <section class="video">
+         <div class="container">
+            <h3 class="video-title">ВИДЕОРОЛИК</h3>
+            <div class="video-video">
+               <iframe width="1056" height="592" src="https://www.youtube.com/embed/IDlF3QoABw8"
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+            </div>
+            <div class="video-effect-div">
+               <span class="video-effect-snowflake"></span>
+               <div class="video-effect-img">
+                  <img class="video-effect" src="./img/video-effect-red.png" alt="background">
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+   <footer class="footer">
+      <div class="footer-container">
+         <ul class="footer-ul flex">
+            <li class="footer-ul-li flex">
+               <a href="#" class="footer-ul-li-logo">
+                  <svg width="130" height="40" viewbox="0 0 130 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M130 39.3643H122.276V30.3581H114.99V39.3643H107.231V15.4489H114.99V24.219H122.276V15.4489H130V39.3643ZM30.6617 10.4229C29.987 11.0976 29.987 12.2107 30.6617 12.8853C31.3363 13.5599 32.4494 13.5599 33.124 12.8853C33.7986 12.2107 33.7986 11.0976 33.124 10.4229C32.4494 9.74831 31.3363 9.74831 30.6617 10.4229ZM36.9019 11.8396C36.9019 11.8396 35.89 19.3954 32.9216 24.1853C32.8132 24.35 32.6874 24.5143 32.5454 24.6759C29.5456 28.9863 24.4023 29.5485 22.1951 29.5485L25.7369 39.398H23.5444L19.699 28.6715C19.6653 28.5029 19.699 28.4017 19.8002 28.368C21.3091 27.7775 21.6697 27.5698 22.7121 26.9694L22.8023 26.9175H22.8207C25.9917 24.8562 27.6972 21.4439 28.4017 19.7665C28.4354 19.6653 28.4354 19.5641 28.3342 19.4966C28.3289 19.4949 28.3237 19.4932 28.3185 19.4916C28.1213 19.8531 27.9233 20.2146 27.6933 20.576C24.9273 24.7587 20.7109 27.7271 13.8635 27.7271H4.38504C4.14893 27.7271 4.14893 27.4909 4.25012 27.3897L6.74623 24.8599C3.27192 24.8599 1.24804 22.8023 0.505958 20.5086C0.438495 20.3737 0.371033 20.1038 0.640883 20.1038H11.2662C12.3793 20.1038 13.1552 19.7665 13.796 19.1931L22.2626 12.1433C19.0918 14.8755 14.7743 19.0919 10.8614 24.4889C10.8315 24.5288 10.8222 24.5746 10.8275 24.6193C10.8311 24.5879 10.8418 24.5552 10.8614 24.5226C14.7743 19.1256 19.0919 14.9092 22.2626 12.177C25.0285 9.78204 26.9175 8.50026 26.9175 8.50026C28.233 7.65698 29.6834 7.21847 31.3363 7.21847C34.1178 7.21847 36.0003 8.88319 36.5539 9.93024L36.5646 9.91699H40.0389C40.275 9.91699 40.3425 10.2206 40.1401 10.3218L36.9019 11.8059L35.7551 11.3C35.659 11.276 35.6142 11.1836 35.6451 11.0837C35.5838 11.1958 35.6483 11.307 35.7551 11.3337L36.9019 11.8396ZM35.3166 23.1733C33.6975 26.5464 32.1458 28.233 28.5703 29.9533L31.9097 39.3643H41.287C39.3643 33.5963 37.273 28.1655 35.3166 23.1733ZM9.47846 39.3643H0C1.15237 35.7097 2.30473 32.5049 3.36299 29.5619L3.44058 29.3461H12.6829L9.47846 39.3643ZM11.0301 18.4172C11.7047 18.4172 12.3119 18.316 12.8179 17.8775L17.6077 13.931C18.5859 11.1988 19.6653 8.39907 20.7447 6.07161C21.3181 7.31967 21.8241 8.56772 22.3638 9.91697C24.9948 7.75817 26.6139 6.47639 28.7727 5.86923C27.4235 2.93461 26.479 0.910742 26.0405 0H15.4152C14.5044 1.88895 11.1313 8.90503 7.18474 18.4172H11.0301ZM71.9149 39.3643L71.4089 36.7333C69.7224 38.521 67.631 39.8703 63.8531 39.8365C60.6487 39.8365 58.4562 38.7571 57.2756 36.5983C55.5215 38.4536 53.329 39.8365 49.5511 39.8365C44.3228 39.8365 41.8267 37.0031 41.8267 31.2351V15.4489H49.5511V30.2231C49.5511 32.4494 50.6642 33.6975 52.6544 33.6975C53.9362 33.6975 55.4878 32.8542 56.1287 32.0446V15.4489H63.8531V30.2231C63.8531 32.4494 65.0337 33.6975 67.1925 33.6975C68.3731 33.6975 69.7898 32.8542 70.4307 32.0446V15.4489H78.1889V39.3643H71.9149ZM92.2211 33.6975C94.11 33.6975 95.2569 32.8542 95.9652 32.0446V21.4868C94.9196 21.2507 94.1775 21.1495 92.727 21.1495C90.2309 21.1495 88.9829 23.4432 88.9829 28.0306C88.9829 31.741 90.1297 33.6975 92.2211 33.6975ZM89.8599 39.8703H89.6238C83.8895 39.8365 80.9211 36.3285 80.9211 28.3342C80.9211 19.699 85.1375 14.9766 92.862 14.9766C98.2927 14.9766 101.194 15.6513 103.723 16.4608V39.3643H97.4157L97.0109 36.7333C95.6954 38.6559 93.3005 39.8365 89.8599 39.8703ZM26.7826 30.5942C26.1754 30.7629 25.467 30.8978 24.725 30.999L27.727 39.3643H29.9196L26.7826 30.5942ZM31.9772 10.423C31.6736 10.7266 31.6736 11.2663 31.9772 11.5699C32.2808 11.8734 32.8205 11.8734 33.1241 11.5699C33.4276 11.2663 33.4276 10.7266 33.1241 10.423C32.8205 10.1194 32.2808 10.1194 31.9772 10.423Z"
+                        fill="white" />
+                  </svg>
+               </a>
+               <span class="footer-ul-li-text">© 2001—2020 ООО «АШАН»</span>
+               <span class="footer-ul-li-text">Все права защищены. «Auchan» является зарегистрированным товарным знаком
+                  Auchan Holding SA.</span>
+            </li>
+            <li class="footer-ul-li footer-ul-li-mobile flex">
+               <h3 class="footer-ul-li-h3">Помощь</h3>
+               <div class="footer-ul-li-panel">
+                  <a href="#" class="footer-ul-li-text">Условия доставки</a>
+                  <a href="#" class="footer-ul-li-text">Возврат</a>
+                  <a href="#" class="footer-ul-li-text">Вопросы и ответы</a>
+                  <a href="#" class="footer-ul-li-text">Обратная связь</a>
+               </div>
+            </li>
+            <li class="footer-ul-li footer-ul-li-mobile flex">
+               <h3 class="footer-ul-li-h3">О нас</h3>
+               <div class="footer-ul-li-panel">
+                  <a href="#" class="footer-ul-li-text">О компании</a>
+                  <a href="#" class="footer-ul-li-text">Новости</a>
+                  <a href="#" class="footer-ul-li-text">Подарочные карты</a>
+                  <a href="#" class="footer-ul-li-text">Политика конфиденциальности</a>
+               </div>
+            </li>
+            <li class="footer-ul-li footer-ul-li-mobile flex">
+               <h3 class="footer-ul-li-h3">Партнерам</h3>
+               <div class="footer-ul-li-panel">
+                  <a href="#" class="footer-ul-li-text">Работа в Ашан</a>
+                  <a href="#" class="footer-ul-li-text">Поставщикам</a>
+                  <a href="#" class="footer-ul-li-text">Аренда</a>
+                  <a href="#" class="footer-ul-li-text">Оптовикам</a>
+               </div>
+            </li>
+            <li class="footer-ul-li flex">
+               <a href="tel:+78007005800" class="footer-ul-li-number">8 800 700-58-00</a>
+               <span class="footer-ul-li-text">Круглосуточная поддержка клиентов</span>
+            </li>
+         </ul>
+      </div>
+   </footer>
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         //Accordion
+         let acc = document.getElementsByClassName("footer-ul-li-mobile");
+
+         for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function (el) {
+               this.lastElementChild.classList.toggle('active');
+            });
+         }
+         //Swiper
+         let slider = document.querySelector('.slider'),
+            sliderList = slider.querySelector('.slider-list'),
+            sliderTrack = slider.querySelector('.slider-track'),
+            slides = slider.querySelectorAll('.slide'),
+            arrows = slider.querySelector('.slider-arrows'),
+            prev = arrows.children[0],
+            next = arrows.children[1],
+            slideWidth = slides[0].offsetWidth,
+            slideIndex = 0,
+            sliderCount = document.querySelector('.swiper-main-count'),
+            posInit = 0,
+            posX1 = 0,
+            posX2 = 0,
+            posY1 = 0,
+            posY2 = 0,
+            posFinal = 0,
+            isSwipe = false,
+            isScroll = false,
+            allowSwipe = true,
+            transition = true,
+            nextTrf = 0,
+            prevTrf = 0,
+            lastTrf = --slides.length * slideWidth,
+            posThreshold = slides[0].offsetWidth * 0.35,
+            trfRegExp = /([-0-9.]+(?=px))/,
+            swipeStartTime,
+            swipeEndTime,
+            getEvent = function () {
+               return (event.type.search('touch') !== -1) ? event.touches[0] : event;
+            },
+            slide = function () {
+               if (transition) {
+                  sliderTrack.style.transition = 'transform .5s';
+               }
+               sliderTrack.style.transform = `translate3d(-${slideIndex * slideWidth}px, 0px, 0px)`;
+               sliderCount.innerHTML = `${slideIndex + 1}/${slides.length}`;
+
+               prev.classList.toggle('disabled', slideIndex === 0);
+               next.classList.toggle('disabled', slideIndex === --slides.length);
+            },
+            swipeStart = function () {
+               let evt = getEvent();
+
+
+               if (allowSwipe) {
+
+                  swipeStartTime = Date.now();
+
+                  transition = true;
+
+                  nextTrf = (slideIndex + 1) * -slideWidth;
+                  prevTrf = (slideIndex - 1) * -slideWidth;
+
+                  posInit = posX1 = evt.clientX;
+                  posY1 = evt.clientY;
+
+                  sliderTrack.style.transition = '';
+
+                  document.addEventListener('touchmove', swipeAction);
+                  document.addEventListener('mousemove', swipeAction);
+                  document.addEventListener('touchend', swipeEnd);
+                  document.addEventListener('mouseup', swipeEnd);
+
+                  sliderList.classList.remove('grab');
+                  sliderList.classList.add('grabbing');
+               }
+            },
+            swipeAction = function () {
+
+               let evt = getEvent(),
+                  style = sliderTrack.style.transform,
+                  transform = +style.match(trfRegExp)[0];
+
+               posX2 = posX1 - evt.clientX;
+               posX1 = evt.clientX;
+
+               posY2 = posY1 - evt.clientY;
+               posY1 = evt.clientY;
+
+               if (!isSwipe && !isScroll) {
+                  let posY = Math.abs(posY2);
+                  if (posY > 7 || posX2 === 0) {
+                     isScroll = true;
+                     allowSwipe = false;
+                  } else if (posY < 7) {
+                     isSwipe = true;
+                  }
+               }
+
+               if (isSwipe) {
+                  if (slideIndex === 0) {
+                     if (posInit < posX1) {
+                        setTransform(transform, 0);
+                        return;
+                     } else {
+                        allowSwipe = true;
+                     }
+                  }
+
+                  if (slideIndex === --slides.length) {
+                     if (posInit > posX1) {
+                        setTransform(transform, lastTrf);
+                        return;
+                     } else {
+                        allowSwipe = true;
+                     }
+                  }
+
+                  if (posInit > posX1 && transform < nextTrf || posInit < posX1 && transform > prevTrf) {
+                     reachEdge();
+                     return;
+                  }
+
+                  sliderTrack.style.transform = `translate3d(${transform - posX2}px, 0px, 0px)`;
+               }
+
+            },
+            swipeEnd = function () {
+               posFinal = posInit - posX1;
+
+               isScroll = false;
+               isSwipe = false;
+
+               document.removeEventListener('touchmove', swipeAction);
+               document.removeEventListener('mousemove', swipeAction);
+               document.removeEventListener('touchend', swipeEnd);
+               document.removeEventListener('mouseup', swipeEnd);
+
+               sliderList.classList.add('grab');
+               sliderList.classList.remove('grabbing');
+
+               if (allowSwipe) {
+                  swipeEndTime = Date.now();
+                  if (Math.abs(posFinal) > posThreshold || swipeEndTime - swipeStartTime < 300) {
+                     if (posInit < posX1) {
+                        slideIndex--;
+                     } else if (posInit > posX1) {
+                        slideIndex++;
+                     }
+                  }
+
+                  if (posInit !== posX1) {
+                     allowSwipe = false;
+                     slide();
+                  } else {
+                     allowSwipe = true;
+                  }
+
+               } else {
+                  allowSwipe = true;
+               }
+
+            },
+            setTransform = function (transform, comapreTransform) {
+               if (transform >= comapreTransform) {
+                  if (transform > comapreTransform) {
+                     sliderTrack.style.transform = `translate3d(${comapreTransform}px, 0px, 0px)`;
+                  }
+               }
+               allowSwipe = false;
+            },
+            reachEdge = function () {
+               transition = false;
+               swipeEnd();
+               allowSwipe = true;
+            };
+
+         sliderTrack.style.transform = 'translate3d(0px, 0px, 0px)';
+         sliderList.classList.add('grab');
+         sliderCount.innerHTML = `${slideIndex + 1}/${slides.length}`,
+            sliderTrack.addEventListener('transitionend', () => allowSwipe = true);
+         slider.addEventListener('touchstart', swipeStart);
+         slider.addEventListener('mousedown', swipeStart);
+
+         arrows.addEventListener('click', function () {
+            let target = event.target;
+
+            if (target.classList.contains('next')) {
+               slideIndex++;
+            } else if (target.classList.contains('prev')) {
+               slideIndex--;
+            } else {
+               return;
+            }
+
+            slide();
+         });
+         //Cards
+
+         let cards = document.querySelectorAll('.cards-ul-li');
+
+         cards.forEach(el => {
+            el.addEventListener('click', function () {
+               if (window.screen.width <= 1024) {
+                  el.classList.toggle('is-flipped');
+               } else {
+                  el.classList.remove('is-flipped');
+               }
+            });
+            el.addEventListener('mouseover', function () {
+               if (window.screen.width > 1024) {
+                  el.classList.add('is-flipped');
+               }
+            });
+         });
+
+      });
+   </script>
+</body>
+
+</html>

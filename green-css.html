@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Auchan Test Red</title>
+   <title>Auchan Test</title>
    <link rel="stylesheet" href="normalize.css">
    <style>
       @font-face {
@@ -28,7 +28,7 @@
       /*------------------------------General------------------------------*/
 
       :root {
-         --bgColor: #C30F1B;
+         --bgColor: #00735C;
       }
 
       html {
@@ -293,77 +293,90 @@
          box-sizing: border-box;
       }
 
-      .slider {
+      #slider {
          position: relative;
-         width: 632px;
-         height: 464px;
-         user-select: none;
-         touch-action: pan-y;
       }
 
-      .slider img {
-         pointer-events: none;
+      #slider-slides article {
+         width: 20%;
+         float: left;
       }
 
-      .slider-list {
+      #slider-slides .slider-image {
+         width: 500%;
+         line-height: 0;
+      }
+
+      #slider-overflow {
          width: 100%;
-         height: 100%;
          overflow: hidden;
       }
 
-      .slider-track {
-         display: flex;
-      }
-
-      .slide {
+      #slider-id:checked~#slider {
          width: 632px;
          height: 464px;
-         flex-shrink: 0;
-         font-size: 50px;
-         display: flex;
-         align-items: center;
-         justify-content: center;
       }
 
-      .slide-img {
-         width: 100%;
-         height: 100%;
-         background-image: url('./img/swiper-img-red.png');
-         background-repeat: no-repeat;
-         background-size: cover;
-      }
-
-      .slider-arrows {
-         margin-top: 15px;
-         text-align: center;
-      }
-
-      .next,
-      .prev {
+      #switch1:checked~#slider-controls label:nth-child(3),
+      #switch2:checked~#slider-controls label:nth-child(1),
+      #switch3:checked~#slider-controls label:nth-child(2) {
+         cursor: pointer;
          position: absolute;
-         width: 64px;
+         background: url('./img/prev.svg') no-repeat;
+         left: 5px;
+         display: block;
          height: 64px;
-         top: 200px;
+         width: 64px;
          z-index: 2;
       }
 
-      .next-svg-mobile,
-      .prev-svg-mobile {
+      #switch1:checked~#slider-controls label:nth-child(2),
+      #switch2:checked~#slider-controls label:nth-child(3),
+      #switch3:checked~#slider-controls label:nth-child(1) {
+         cursor: pointer;
+         position: absolute;
+         background: url('./img/next.svg') no-repeat;
+         right: 35px;
+         display: block;
+         height: 64px;
+         width: 64px;
+         z-index: 2;
+      }
+
+      .swiper-main-left input {
          display: none;
       }
 
-      .next {
-         right: 25px;
+      #switch1:checked~#slider-slides .slider-image {
+         margin-left: 0;
       }
 
-      .prev {
-         left: 15px;
+      #switch2:checked~#slider-slides .slider-image {
+         margin-left: -100%;
       }
 
-      .next.disabled,
-      .prev.disabled {
-         opacity: .25;
-         pointer-events: none;
+      #switch3:checked~#slider-slides .slider-image {
+         margin-left: -200%;
+      }
+
+      #slider-controls {
+         position: absolute;
+         top: 182px;
+         left: 1px;
+         width: 100%;
+         height: 50px;
+      }
+
+      .slider-slide {
+         width: 632px;
+         height: 464px;
+         background-image: url('./img/swiper-img-green.png');
+         background-repeat: no-repeat;
+         background-size: contain;
+      }
+
+      #slider-slides .slider-image {
+         transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
       }
 
       .swiper-h1 {
@@ -411,8 +424,9 @@
          position: absolute;
          width: 64px;
          height: 2px;
-         right: 52px;
+         left: 50%;
          bottom: -13px;
+         transform: translateX(-50%);
          border-bottom: 2px solid #FFFFFF;
       }
 
@@ -429,7 +443,7 @@
          position: absolute;
          width: 48px;
          height: 43px;
-         left: 40px;
+         left: 48px;
          top: 30px;
          background-image: url('./img/snowflake1.png');
          background-repeat: no-repeat;
@@ -443,7 +457,7 @@
          width: 30px;
          height: 30px;
          right: 42px;
-         bottom: 30px;
+         bottom: 55px;
          background-image: url('./img/snowflake3.png');
          background-repeat: no-repeat;
          background-size: cover;
@@ -455,7 +469,7 @@
          position: absolute;
          width: 94px;
          height: 94px;
-         right: -47px;
+         right: -54px;
          top: 185px;
          background-image: url('./img/snowflake2.png');
          background-repeat: no-repeat;
@@ -474,7 +488,7 @@
          right: 0;
          width: 480px;
          height: 464px;
-         background-image: url('./img/swiper-bg-red.png');
+         background-image: url('./img/swiper-bg-green.png');
          background-repeat: no-repeat;
          background-size: cover;
       }
@@ -483,26 +497,12 @@
          display: none;
       }
 
-      .swiper-main-count {
-         position: absolute;
-         bottom: 20px;
-         left: 35px;
-         font-family: 'SanaSansAlt-Book';
-         font-style: normal;
-         font-weight: 400;
-         font-size: 24px;
-         line-height: 29px;
-         color: #FFFFFF;
-         z-index: 1;
-      }
-
       .swiper-main-right-descr {
          flex-direction: column;
          position: relative;
          z-index: 1;
          justify-content: center;
          align-items: center;
-         padding-top: 25px;
       }
 
       .swiper-main-right-descr-title {
@@ -513,8 +513,8 @@
       }
 
       .swiper-main-right-descr-img {
-         margin-top: -18px;
-         margin-bottom: -18px;
+         margin-top: -6px;
+         margin-bottom: -26px;
       }
 
       .swiper-main-right-descr-text {
@@ -526,7 +526,7 @@
          font-size: 16px;
          line-height: 140%;
          color: #FFFFFF;
-         margin-bottom: 40px;
+         margin-bottom: 30px;
       }
 
       .swiper-main-right-descr-btn {
@@ -560,7 +560,7 @@
          position: relative;
       }
 
-      .cards-ul-li.is-flipped {
+      .cards-ul-li:hover {
          transform: rotateY(180deg);
       }
 
@@ -598,19 +598,19 @@
       }
 
       .cards-ul-li-front-img1 {
-         background-image: url('./img/card1-red.png');
+         background-image: url('./img/card1-green.png');
          background-repeat: no-repeat;
          background-size: cover;
       }
 
       .cards-ul-li-front-img2 {
-         background-image: url('./img/card2-red.png');
+         background-image: url('./img/card2-green.png');
          background-repeat: no-repeat;
          background-size: cover;
       }
 
       .cards-ul-li-front-img3 {
-         background-image: url('./img/card3-red.png');
+         background-image: url('./img/card3-green.png');
          background-repeat: no-repeat;
          background-size: cover;
       }
@@ -623,7 +623,7 @@
          content: '';
          position: absolute;
          top: -86px;
-         left: -103px;
+         left: -120px;
          width: 211px;
          height: 188px;
          background-image: url('./img/snowflake4.png');
@@ -634,8 +634,8 @@
       .cards::after {
          content: '';
          position: absolute;
-         bottom: -4px;
-         right: -238px;
+         bottom: -201px;
+         right: -222px;
          width: 383px;
          height: 341px;
          background-image: url('./img/snowflake4.png');
@@ -644,7 +644,7 @@
       }
 
       .cards-ul {
-         margin-bottom: 30px;
+         padding-bottom: 55px;
       }
 
       .cards-ul-li {
@@ -659,7 +659,7 @@
 
       .cards-ul-li-add {
          position: absolute;
-         top: -93px;
+         top: -75px;
          bottom: 0;
          left: 0;
          right: 0;
@@ -705,7 +705,7 @@
          left: 0;
          width: 100%;
          height: 201px;
-         background-image: url('./img/cards-bg-red.png');
+         background-image: url('./img/cards-bg-green.png');
          background-repeat: no-repeat;
          background-size: cover;
       }
@@ -822,6 +822,7 @@
 
       .video {
          background-color: var(--bgColor);
+         padding-bottom: 60px;
       }
 
       .video-title {
@@ -840,7 +841,8 @@
       }
 
       .video-effect {
-         margin-left: 40px;
+         margin-left: -44px;
+         margin-top: 30px;
       }
 
       .video-effect-div {
@@ -850,8 +852,8 @@
       .video-effect-div::before {
          content: '';
          position: absolute;
-         top: -33px;
-         left: 284px;
+         top: 58px;
+         left: 266px;
          width: 37px;
          height: 37px;
          background-image: url('./img/snowflake3.png');
@@ -862,8 +864,8 @@
       .video-effect-div::after {
          content: '';
          position: absolute;
-         top: 114px;
-         right: 124px;
+         top: 175px;
+         right: 143px;
          width: 37px;
          height: 37px;
          background-image: url('./img/snowflake3.png');
@@ -873,8 +875,8 @@
 
       .video-effect-snowflake {
          position: absolute;
-         top: 40px;
-         left: 140px;
+         top: 129px;
+         left: 119px;
          width: 64px;
          height: 57px;
          background-image: url('./img/snowflake1.png');
@@ -899,6 +901,12 @@
          max-width: 312px;
          min-width: 200px;
          flex-direction: column;
+      }
+
+      #toggle-input1,
+      #toggle-input2,
+      #toggle-input3 {
+         display: none;
       }
 
       .footer-ul-li-logo {
@@ -1069,15 +1077,6 @@
             display: none;
          }
 
-         .swiper-main-count {
-            font-size: 18px;
-            line-height: 22px;
-            bottom: 0;
-            left: 50%;
-            transform: translate(-50%, 0);
-            top: 10px;
-         }
-
          .swiper-ul {
             padding-left: 0;
             overflow-x: scroll;
@@ -1093,25 +1092,11 @@
          }
 
 
-         .next-svg-mobile,
-         .prev-svg-mobile {
-            display: block;
-         }
-
-         .prev,
-         .next {
-            top: 185px;
-            width: 16px;
-            height: 16px;
-         }
 
          .cards {
             padding-top: 65px;
          }
 
-         .next {
-            right: 15px;
-         }
 
          .cards-ul-li:last-child {
             min-height: 488px;
@@ -1125,9 +1110,46 @@
             margin-bottom: 0;
          }
 
-         .next-svg,
-         .prev-svg {
-            display: none;
+
+         #slider-id:checked~#slider {
+            width: 288px;
+            height: 386px;
+         }
+
+         .slider-slide {
+            width: 288px;
+            height: 386px;
+            background-image: url('./img/swiper-img-mobile-green.png');
+         }
+
+         #switch1:checked~#slider-controls label:nth-child(3),
+         #switch2:checked~#slider-controls label:nth-child(1),
+         #switch3:checked~#slider-controls label:nth-child(2) {
+            cursor: pointer;
+            position: absolute;
+            background: url('./img/left-mobile.svg') no-repeat;
+            left: 15px;
+            display: block;
+            height: 16px;
+            width: 16px;
+            z-index: 2;
+         }
+
+         #switch1:checked~#slider-controls label:nth-child(2),
+         #switch2:checked~#slider-controls label:nth-child(3),
+         #switch3:checked~#slider-controls label:nth-child(1) {
+            cursor: pointer;
+            position: absolute;
+            background: url('./img/right-mobile.svg') no-repeat;
+            right: 15px;
+            display: block;
+            height: 16px;
+            width: 16px;
+            z-index: 2;
+         }
+
+         #slider-controls {
+            top: 183px;
          }
 
          .swiper-main-right-background {
@@ -1145,11 +1167,6 @@
             margin-right: 26px;
          }
 
-         .slider {
-            width: 288px;
-            height: 386px;
-         }
-
          .swiper-main {
             flex-direction: column;
          }
@@ -1161,7 +1178,7 @@
          .swiper-main-right-background {
             width: 100%;
             height: 360px;
-            background-image: url('./img/swiper-bg-mobile-red.png');
+            background-image: url('./img/swiper-bg-mobile-green.png');
          }
 
          .swiper-main-right-background-mobile {
@@ -1169,8 +1186,8 @@
             bottom: -32px;
             display: block;
             width: 100%;
-            height: 200px;
-            background-color: #9C131A;
+            height: 260px;
+            background-color: #006855;
             border-radius: 0px 0px 4px 4px;
             z-index: -1;
          }
@@ -1214,15 +1231,6 @@
 
          .cards-ul-li-back-content-text {
             max-width: 220px;
-         }
-
-         .slide {
-            width: 288px;
-            height: 386px;
-         }
-
-         .slide-img {
-            background-image: url('./img/swiper-img-mobile-red.png');
          }
 
          .cards-ul {
@@ -1311,6 +1319,22 @@
 
          .footer-ul {
             flex-direction: column-reverse;
+         }
+
+         #toggle-input1:checked~.footer-ul-li-panel {
+            display: flex;
+         }
+
+         #toggle-input2:checked~.footer-ul-li-panel {
+            display: flex;
+         }
+
+         #toggle-input3:checked~.footer-ul-li-panel {
+            display: flex;
+         }
+
+         .footer-ul-li-panel {
+            display: none;
          }
       }
    </style>
@@ -1430,10 +1454,10 @@
             <img class="swiper-h1" src="./img/swiper-h1.png" alt="">
             <img class="swiper-h1-mobile swiper-h1" src="./img/swiper-h1-mobile.png" alt="">
             <ul class="swiper-ul flex">
-               <li class="swiper-ul-li swiper-ul-li-checked">
-                  Новогодние сказки
-               </li>
                <li class="swiper-ul-li">
+                  <a href="./red-css.html">Новогодние сказки</a>
+               </li>
+               <li class="swiper-ul-li swiper-ul-li-checked">
                   Зимний лес
                </li>
                <li class="swiper-ul-li">
@@ -1447,153 +1471,42 @@
                </li>
             </ul>
             <div class="swiper-main flex">
-               <span class="swiper-main-count"></span>
                <div class="swiper-main-left">
-
-                  <div class="slider">
-                     <div class="slider-list">
-                        <div class="slider-track">
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
-                           </div>
-                           <div class="slide">
-                              <div class="slide-img"></div>
+                  <input checked type="radio" name="slider-input" id="slider-id">
+                  <article id="slider">
+                     <input checked type="radio" name="slider" id="switch1">
+                     <input type="radio" name="slider" id="switch2">
+                     <input type="radio" name="slider" id="switch3">
+                     <div id="slider-slides">
+                        <div id="slider-overflow">
+                           <div class="slider-image">
+                              <article>
+                                 <div class="slider-slide"></div>
+                              </article>
+                              <article>
+                                 <div class="slider-slide"></div>
+                              </article>
+                              <article>
+                                 <div class="slider-slide"></div>
+                              </article>
                            </div>
                         </div>
                      </div>
-                     <div class="slider-arrows">
-                        <button type="button" class="prev">
-                           <svg class="prev-svg" style="pointer-events: none;" width="64" height="64"
-                              viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <circle cx="32" cy="32" r="32" fill="#333333" fill-opacity="0.56" />
-                              <g filter="url(#filter0_d_1_826)">
-                                 <circle cx="32" cy="32" r="18" fill="white" />
-                              </g>
-                              <path
-                                 d="M35.4237 26.6961C35.7077 26.412 35.7077 25.9516 35.4237 25.6675C35.1397 25.3835 34.6792 25.3835 34.3952 25.6675L28.577 31.4857C28.293 31.7697 28.293 32.2302 28.577 32.5142L34.3952 38.3324C34.6792 38.6164 35.1397 38.6164 35.4237 38.3324C35.7077 38.0484 35.7077 37.5879 35.4237 37.3039L30.1198 32L35.4237 26.6961Z"
-                                 fill="#666666" />
-                              <defs>
-                                 <filter id="filter0_d_1_826" x="10" y="14" width="44" height="44"
-                                    filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feflood flood-opacity="0" result="BackgroundImageFix" />
-                                    <fecolormatrix in="SourceAlpha" type="matrix"
-                                       values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                    <feoffset dy="4" />
-                                    <fegaussianblur stddeviation="2" />
-                                    <fecolormatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                    <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_826" />
-                                    <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_826"
-                                       result="shape" />
-                                 </filter>
-                              </defs>
-                           </svg>
-                           <svg class="prev-svg-mobile" style="pointer-events: none;" width="16" height="16"
-                              viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                 d="M11.4233 13.3039C11.7074 13.5879 11.7074 14.0484 11.4233 14.3324C11.1393 14.6164 10.6788 14.6164 10.3948 14.3324L4.57664 8.51421C4.29262 8.2302 4.29262 7.76971 4.57664 7.48569L10.3948 1.66751C10.6788 1.3835 11.1393 1.3835 11.4233 1.66751C11.7074 1.95153 11.7074 2.41202 11.4233 2.69603L6.11942 7.99995L11.4233 13.3039Z"
-                                 fill="white" />
-                           </svg>
-                        </button>
-                        <button type="button" class="next">
-                           <svg class="next-svg" style="pointer-events: none;" width="64" height="64"
-                              viewbox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <circle cx="32" cy="32" r="32" transform="rotate(-180 32 32)" fill="#333333"
-                                 fill-opacity="0.56" />
-                              <g filter="url(#filter0_d_1_830)">
-                                 <circle cx="32" cy="32" r="18" transform="rotate(-180 32 32)" fill="white" />
-                              </g>
-                              <path
-                                 d="M28.5768 37.3039C28.2928 37.588 28.2928 38.0484 28.5768 38.3325C28.8608 38.6165 29.3213 38.6165 29.6053 38.3325L35.4235 32.5143C35.7075 32.2303 35.7075 31.7698 35.4235 31.4858L29.6053 25.6676C29.3213 25.3836 28.8608 25.3836 28.5768 25.6676C28.2928 25.9516 28.2928 26.4121 28.5768 26.6961L33.8807 32L28.5768 37.3039Z"
-                                 fill="#666666" />
-                              <defs>
-                                 <filter id="filter0_d_1_830" x="10" y="14" width="44" height="44"
-                                    filterunits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feflood flood-opacity="0" result="BackgroundImageFix" />
-                                    <fecolormatrix in="SourceAlpha" type="matrix"
-                                       values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                    <feoffset dy="4" />
-                                    <fegaussianblur stddeviation="2" />
-                                    <fecolormatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                    <feblend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_830" />
-                                    <feblend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_830"
-                                       result="shape" />
-                                 </filter>
-                              </defs>
-                           </svg>
-                           <svg class="next-svg-mobile" style="pointer-events: none;" width="16" height="16"
-                              viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                 d="M4.57665 2.69612C4.29264 2.4121 4.29264 1.95162 4.57665 1.6676C4.86067 1.38359 5.32115 1.38359 5.60517 1.6676L11.4234 7.48579C11.7074 7.7698 11.7074 8.23029 11.4234 8.5143L5.60517 14.3325C5.32115 14.6165 4.86067 14.6165 4.57665 14.3325C4.29264 14.0485 4.29264 13.588 4.57665 13.304L9.88058 8.00004L4.57665 2.69612Z"
-                                 fill="white" />
-                           </svg>
-
-                        </button>
+                     <div id="slider-controls">
+                        <label for="switch1"></label>
+                        <label for="switch2"></label>
+                        <label for="switch3"></label>
                      </div>
-                  </div>
+                  </article>
                </div>
                <div class="swiper-main-right">
                   <div class="swiper-main-right-descr flex">
                      <h2 class="swiper-main-right-descr-title">Коллекция</h2>
-                     <img class="swiper-main-right-descr-img" src="./img/swiper-right-bg-red.png" alt="background">
-                     <p class="swiper-main-right-descr-text">Подарите домой радостное настроение Рождества. Красные и
-                        белые
-                        рождественские мотивы создадут
-                        теплую семейную атмосферу, а свет свечей привнесет немного волшебства. Традиционно нельзя
-                        пропустить Санту, который выглядит великолепно, как каждый год!</p>
+                     <img class="swiper-main-right-descr-img" src="./img/swiper-right-bg-green.png" alt="background">
+                     <p class="swiper-main-right-descr-text">Превратите свой интерьер в красивый зимний пейзаж, словно
+                        прикоснувшись к волшебной палочке Снежной Королевы. Полярные мотивы с матовой растительностью
+                        привносят в интерьер спокойную, умиротворяющую атмосферу. Милые полярные животные не могут
+                        дождаться момента, когда они устроятся на вашем диване или заберутся на елку.</p>
                      <button class="swiper-main-right-descr-btn">Смотреть</button>
                   </div>
                   <div class="swiper-main-right-background"></div>
@@ -1704,7 +1617,6 @@
                   </div>
                </li>
             </ul>
-            <img class="cards-bg-bottom" src="./img/cards-bg-bottom.png" alt="background">
          </div>
       </section>
       <section class="video">
@@ -1719,7 +1631,7 @@
             <div class="video-effect-div">
                <span class="video-effect-snowflake"></span>
                <div class="video-effect-img">
-                  <img class="video-effect" src="./img/video-effect-red.png" alt="background">
+                  <img class="video-effect" src="./img/video-effect-green.png" alt="background">
                </div>
             </div>
          </div>
@@ -1741,7 +1653,10 @@
                   Auchan Holding SA.</span>
             </li>
             <li class="footer-ul-li footer-ul-li-mobile flex">
-               <h3 class="footer-ul-li-h3">Помощь</h3>
+               <h3 class="footer-ul-li-h3">
+                  <label for="toggle-input1">Помощь</label>
+               </h3>
+               <input type="checkbox" id="toggle-input1">
                <div class="footer-ul-li-panel">
                   <a href="#" class="footer-ul-li-text">Условия доставки</a>
                   <a href="#" class="footer-ul-li-text">Возврат</a>
@@ -1750,7 +1665,10 @@
                </div>
             </li>
             <li class="footer-ul-li footer-ul-li-mobile flex">
-               <h3 class="footer-ul-li-h3">О нас</h3>
+               <h3 class="footer-ul-li-h3">
+                  <label for="toggle-input2">О нас</label>
+               </h3>
+               <input type="checkbox" id="toggle-input2">
                <div class="footer-ul-li-panel">
                   <a href="#" class="footer-ul-li-text">О компании</a>
                   <a href="#" class="footer-ul-li-text">Новости</a>
@@ -1759,7 +1677,10 @@
                </div>
             </li>
             <li class="footer-ul-li footer-ul-li-mobile flex">
-               <h3 class="footer-ul-li-h3">Партнерам</h3>
+               <h3 class="footer-ul-li-h3">
+                  <label for="toggle-input3">Партнерам</label>
+               </h3>
+               <input type="checkbox" id="toggle-input3">
                <div class="footer-ul-li-panel">
                   <a href="#" class="footer-ul-li-text">Работа в Ашан</a>
                   <a href="#" class="footer-ul-li-text">Поставщикам</a>
@@ -1774,225 +1695,6 @@
          </ul>
       </div>
    </footer>
-   <script>
-      document.addEventListener('DOMContentLoaded', () => {
-         //Accordion
-         let acc = document.getElementsByClassName("footer-ul-li-mobile");
-
-         for (let i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function (el) {
-               this.lastElementChild.classList.toggle('active');
-            });
-         }
-         //Swiper
-         let slider = document.querySelector('.slider'),
-            sliderList = slider.querySelector('.slider-list'),
-            sliderTrack = slider.querySelector('.slider-track'),
-            slides = slider.querySelectorAll('.slide'),
-            arrows = slider.querySelector('.slider-arrows'),
-            prev = arrows.children[0],
-            next = arrows.children[1],
-            slideWidth = slides[0].offsetWidth,
-            slideIndex = 0,
-            sliderCount = document.querySelector('.swiper-main-count'),
-            posInit = 0,
-            posX1 = 0,
-            posX2 = 0,
-            posY1 = 0,
-            posY2 = 0,
-            posFinal = 0,
-            isSwipe = false,
-            isScroll = false,
-            allowSwipe = true,
-            transition = true,
-            nextTrf = 0,
-            prevTrf = 0,
-            lastTrf = --slides.length * slideWidth,
-            posThreshold = slides[0].offsetWidth * 0.35,
-            trfRegExp = /([-0-9.]+(?=px))/,
-            swipeStartTime,
-            swipeEndTime,
-            getEvent = function () {
-               return (event.type.search('touch') !== -1) ? event.touches[0] : event;
-            },
-            slide = function () {
-               if (transition) {
-                  sliderTrack.style.transition = 'transform .5s';
-               }
-               sliderTrack.style.transform = `translate3d(-${slideIndex * slideWidth}px, 0px, 0px)`;
-               sliderCount.innerHTML = `${slideIndex + 1}/${slides.length}`;
-
-               prev.classList.toggle('disabled', slideIndex === 0);
-               next.classList.toggle('disabled', slideIndex === --slides.length);
-            },
-            swipeStart = function () {
-               let evt = getEvent();
-
-
-               if (allowSwipe) {
-
-                  swipeStartTime = Date.now();
-
-                  transition = true;
-
-                  nextTrf = (slideIndex + 1) * -slideWidth;
-                  prevTrf = (slideIndex - 1) * -slideWidth;
-
-                  posInit = posX1 = evt.clientX;
-                  posY1 = evt.clientY;
-
-                  sliderTrack.style.transition = '';
-
-                  document.addEventListener('touchmove', swipeAction);
-                  document.addEventListener('mousemove', swipeAction);
-                  document.addEventListener('touchend', swipeEnd);
-                  document.addEventListener('mouseup', swipeEnd);
-
-                  sliderList.classList.remove('grab');
-                  sliderList.classList.add('grabbing');
-               }
-            },
-            swipeAction = function () {
-
-               let evt = getEvent(),
-                  style = sliderTrack.style.transform,
-                  transform = +style.match(trfRegExp)[0];
-
-               posX2 = posX1 - evt.clientX;
-               posX1 = evt.clientX;
-
-               posY2 = posY1 - evt.clientY;
-               posY1 = evt.clientY;
-
-               if (!isSwipe && !isScroll) {
-                  let posY = Math.abs(posY2);
-                  if (posY > 7 || posX2 === 0) {
-                     isScroll = true;
-                     allowSwipe = false;
-                  } else if (posY < 7) {
-                     isSwipe = true;
-                  }
-               }
-
-               if (isSwipe) {
-                  if (slideIndex === 0) {
-                     if (posInit < posX1) {
-                        setTransform(transform, 0);
-                        return;
-                     } else {
-                        allowSwipe = true;
-                     }
-                  }
-
-                  if (slideIndex === --slides.length) {
-                     if (posInit > posX1) {
-                        setTransform(transform, lastTrf);
-                        return;
-                     } else {
-                        allowSwipe = true;
-                     }
-                  }
-
-                  if (posInit > posX1 && transform < nextTrf || posInit < posX1 && transform > prevTrf) {
-                     reachEdge();
-                     return;
-                  }
-
-                  sliderTrack.style.transform = `translate3d(${transform - posX2}px, 0px, 0px)`;
-               }
-
-            },
-            swipeEnd = function () {
-               posFinal = posInit - posX1;
-
-               isScroll = false;
-               isSwipe = false;
-
-               document.removeEventListener('touchmove', swipeAction);
-               document.removeEventListener('mousemove', swipeAction);
-               document.removeEventListener('touchend', swipeEnd);
-               document.removeEventListener('mouseup', swipeEnd);
-
-               sliderList.classList.add('grab');
-               sliderList.classList.remove('grabbing');
-
-               if (allowSwipe) {
-                  swipeEndTime = Date.now();
-                  if (Math.abs(posFinal) > posThreshold || swipeEndTime - swipeStartTime < 300) {
-                     if (posInit < posX1) {
-                        slideIndex--;
-                     } else if (posInit > posX1) {
-                        slideIndex++;
-                     }
-                  }
-
-                  if (posInit !== posX1) {
-                     allowSwipe = false;
-                     slide();
-                  } else {
-                     allowSwipe = true;
-                  }
-
-               } else {
-                  allowSwipe = true;
-               }
-
-            },
-            setTransform = function (transform, comapreTransform) {
-               if (transform >= comapreTransform) {
-                  if (transform > comapreTransform) {
-                     sliderTrack.style.transform = `translate3d(${comapreTransform}px, 0px, 0px)`;
-                  }
-               }
-               allowSwipe = false;
-            },
-            reachEdge = function () {
-               transition = false;
-               swipeEnd();
-               allowSwipe = true;
-            };
-
-         sliderTrack.style.transform = 'translate3d(0px, 0px, 0px)';
-         sliderList.classList.add('grab');
-         sliderCount.innerHTML = `${slideIndex + 1}/${slides.length}`,
-            sliderTrack.addEventListener('transitionend', () => allowSwipe = true);
-         slider.addEventListener('touchstart', swipeStart);
-         slider.addEventListener('mousedown', swipeStart);
-
-         arrows.addEventListener('click', function () {
-            let target = event.target;
-
-            if (target.classList.contains('next')) {
-               slideIndex++;
-            } else if (target.classList.contains('prev')) {
-               slideIndex--;
-            } else {
-               return;
-            }
-
-            slide();
-         });
-         //Cards
-
-         let cards = document.querySelectorAll('.cards-ul-li');
-
-         cards.forEach(el => {
-            el.addEventListener('click', function () {
-               if (window.screen.width <= 1024) {
-                  el.classList.toggle('is-flipped');
-               } else {
-                  el.classList.remove('is-flipped');
-               }
-            });
-            el.addEventListener('mouseover', function () {
-               if (window.screen.width > 1024) {
-                  el.classList.add('is-flipped');
-               }
-            });
-         });
-
-      });
-   </script>
 </body>
 
 </html>
